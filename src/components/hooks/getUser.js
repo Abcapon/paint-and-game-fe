@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 const useGetUsers = (currentPage) => {
 	const [users, setUsers] = useState([]);
@@ -6,7 +7,7 @@ const useGetUsers = (currentPage) => {
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const response = await fetch(
+				const response = await axios.get(
 					`${process.env.REACT_APP_SERVER_BASE_URL}/users?page=${currentPage}`
 				);
 				const data = await response.json();

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 const useGetProducts = (currentPage) => {
 	const [products, setProducts] = useState([]);
@@ -6,11 +7,10 @@ const useGetProducts = (currentPage) => {
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const response = await fetch(
+				const response = await axios.get(
 					`${process.env.REACT_APP_SERVER_BASE_URL}/products?page=${currentPage}`
 				);
-				const data = await response.json();
-				setProducts(data);
+				setProducts(response.data);
 			} catch (error) {
 				console.log(error);
 			}
