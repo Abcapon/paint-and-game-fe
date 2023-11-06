@@ -28,7 +28,7 @@ const Footer = () => {
 			<p class="text-white bg-red-600 p-5">
 				Questo sito è stato creato per mero scopo didattico e con nessun fine
 				commerciale, le foto degli articoli presenti provengono dai siti:
-				gamesworkshop, geekdad, n3rdcore ...
+				gamesworkshop, geekdad, n3rdcore, atomic mass games, ...
 			</p>
 		</footer>
 	);

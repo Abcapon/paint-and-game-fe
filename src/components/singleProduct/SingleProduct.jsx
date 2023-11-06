@@ -2,7 +2,7 @@ import React from "react";
 
 const SingleProduct = ({ name, category, description, price, cover }) => {
 	return (
-		<div class="bg-yellow-400 border border-gray-800 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 h-1/2 w-50 flex flex-col justify-center items-center text-center">
+		<div class="bg-yellow-400 border border-gray-800 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 w-50 flex flex-col justify-center items-center text-center">
 			<a href="#" className="h-1/2">
 				<img class="rounded-t-lg object-cover h-full" src={cover} alt="" />
 			</a>
@@ -15,7 +15,7 @@ const SingleProduct = ({ name, category, description, price, cover }) => {
 				<p class="mb-3 font-normal text-green-700 dark:text-gray-400">
 					{category}
 				</p>
-				<p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+				<p class="mb-3 font-normal text-gray-700 dark:text-gray-400 truncate max-w-xs overflow-hidden">
 					{description}
 				</p>
 				<p class="mb-3 font-bold text-gray-700 dark:text-gray-400">{price}€</p>

@@ -81,16 +81,20 @@ const NewProduct = () => {
 				</div>
 				<div className="mb-4">
 					<label className="block text-sm font-medium text-gray-700">
-						category
+						Categoria
 					</label>
-					<input
-						type="text"
+					<select
 						name="category"
 						value={formData.category}
 						onChange={handleInputChange}
 						className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-500"
-						placeholder="category"
-					/>
+					>
+						<option value="Pittura">Pittura</option>
+						<option value="Warhammer 40k">Warhammer 40k</option>
+						<option value="Warhammer AOS">Warhammer AOS</option>
+						<option value="Starwars Legion">Starwars Legion</option>
+						<option value="Starwars Shatterpoint">Starwars Shatterpoint</option>
+					</select>
 				</div>
 				<div className="mb-4">
 					<label className="block text-sm font-medium text-gray-700">
