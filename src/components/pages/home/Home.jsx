@@ -11,17 +11,22 @@ import Jumbotron from "../../jumbotron/Jumbotron";
 const Home = () => {
 	const [currentPage, setCurrentPage] = useState(1);
 	const products = useGetProducts(currentPage);
+
+	const promoProducts = products?.products?.filter(
+		(product) => product?.isInPromo
+	);
+
 	const session = useSession();
-	console.log(session);
 
 	return (
 		<>
 			<Navbar />
 			<Jumbotron />
+			<h1 className="text-3xl text-center">OFFERTE DELLA SETTIMANA</h1>
 			<div className="min-h-screen flex bg-orange-400 pt-2">
 				<div className="grid grid-cols-4 gap-4">
 					{products &&
-						products.products?.map((product) => (
+						promoProducts?.map((product) => (
 							<SingleProduct
 								cover={product.cover}
 								name={product.name}

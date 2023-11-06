@@ -10,11 +10,13 @@ const NewProduct = () => {
 		category: "",
 		description: "",
 		price: "",
-		promo: "false",
+		promo: false,
 	});
+
 	console.log(formData);
 
 	const [cover, setCover] = useState(null);
+	console.log(cover);
 
 	const handleFileChange = (e) => {
 		setCover(e.target.files[0]);
@@ -29,6 +31,7 @@ const NewProduct = () => {
 		fileData.append("description", formData.description);
 		fileData.append("price", formData.price);
 		fileData.append("promo", formData.promo);
+		console.log("Data to be sent to the server:", fileData);
 
 		try {
 			const response = await axios.post(
@@ -134,7 +137,10 @@ const NewProduct = () => {
 					<select
 						name="promo"
 						value={formData.promo}
-						onChange={handleInputChange}
+						onChange={(e) => {
+							const isPromo = e.target.value === "true";
+							setFormData({ ...formData, promo: isPromo });
+						}}
 						className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-500"
 					>
 						<option value="true">Vero</option>
