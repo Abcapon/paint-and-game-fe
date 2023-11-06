@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const NewProduct = () => {
+	const navigate = useNavigate();
+
 	const [formData, setFormData] = useState({
 		name: "",
 		category: "",
 		description: "",
 		price: "",
+		promo: "false",
 	});
+	console.log(formData);
 
 	const [cover, setCover] = useState(null);
 
@@ -24,6 +28,7 @@ const NewProduct = () => {
 		fileData.append("category", formData.category);
 		fileData.append("description", formData.description);
 		fileData.append("price", formData.price);
+		fileData.append("promo", formData.promo);
 
 		try {
 			const response = await axios.post(
@@ -38,6 +43,7 @@ const NewProduct = () => {
 
 			if (response.status === 201) {
 				const newProduct = response.data;
+				navigate(`/`);
 			} else {
 				console.error("Error during product saving");
 			}
@@ -121,6 +127,20 @@ const NewProduct = () => {
 						className="w-full"
 					/>
 				</div>
+				<div className="mb-4">
+					<label className="block text-sm font-medium text-gray-700">
+						Is in promo?
+					</label>
+					<select
+						name="promo"
+						value={formData.promo}
+						onChange={handleInputChange}
+						className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-500"
+					>
+						<option value="true">Vero</option>
+						<option value="false">Falso</option>
+					</select>
+				</div>
 				<div className="flex justify-end gap-3">
 					<button
 						type="submit"
@@ -128,7 +148,7 @@ const NewProduct = () => {
 					>
 						Invia
 					</button>
-					<Link to="/home">
+					<Link to="/">
 						<button className="px-4 py-2 rounded-lg border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white">
 							Chiudi
 						</button>

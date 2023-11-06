@@ -2,11 +2,11 @@ import React from "react";
 
 const SingleProduct = ({ name, category, description, price, cover }) => {
 	return (
-		<div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-			<a href="#">
-				<img class="rounded-t-lg" src={cover} alt="" />
+		<div class="bg-yellow-400 border border-gray-800 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 h-1/2 w-50 flex flex-col justify-center items-center text-center">
+			<a href="#" className="h-1/2">
+				<img class="rounded-t-lg object-cover h-full" src={cover} alt="" />
 			</a>
-			<div class="p-5">
+			<div class="h-1/2">
 				<a href="#">
 					<h5 class="mb-2 text-2xl font-bold tracking-tight text-red-900 dark:text-white">
 						{name}

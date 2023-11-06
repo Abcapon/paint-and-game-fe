@@ -6,7 +6,7 @@ const About = () => {
 	return (
 		<>
 			<Navbar />
-			<div className="text-center min-h-screen pt-10 grid grid-cols-3">
+			<div className="text-center min-h-screen pt-10 grid grid-cols-3 bg-orange-400">
 				<div class="col-span-1"></div>
 				<div class="col-span-1">
 					<h1 className="text-3xl">Paint&Game</h1>

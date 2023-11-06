@@ -6,7 +6,9 @@ const Privacy = () => {
 	return (
 		<>
 			<Navbar />
-			<div className="min-h-screen text-center">Informativa Privacy</div>
+			<div className="min-h-screen text-center bg-orange-400 pt-10">
+				Informativa Privacy
+			</div>
 			<Footer />
 		</>
 	);
