@@ -28,7 +28,8 @@ const Footer = () => {
 			<p class="text-white bg-red-600 p-5">
 				Questo sito è stato creato per mero scopo didattico e con nessun fine
 				commerciale, le foto degli articoli presenti provengono dai siti:
-				gamesworkshop, geekdad, n3rdcore, atomic mass games, ...
+				"gamesworkshop", "geekdad", "n3rdcore", "atomic mass games", ... il
+				video proviene dal canale youtube di "The Army Painter"
 			</p>
 		</footer>
 	);

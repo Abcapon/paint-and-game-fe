@@ -7,7 +7,8 @@ import SingleProduct from "../../singleProduct/SingleProduct";
 import { nanoid } from "nanoid";
 import useSession from "../../hooks/useSession";
 import Jumbotron from "../../jumbotron/Jumbotron";
-import Carousel from "../../Carousel/Carousel";
+import Cart from "../../context/CartContext";
+import "./style.css";
 
 const Home = () => {
 	const [currentPage, setCurrentPage] = useState(1);
@@ -19,42 +20,14 @@ const Home = () => {
 
 	const session = useSession();
 
-	const images = [
-		{
-			category: "Starwars Legion",
-			url: "https://images.squarespace-cdn.com/content/v1/5ce432b1f9d2be000134d8ae/c942cfab-47c1-4b45-a2ee-9992f5a67079/DallasKemp-GAR-LAAT_Fullshot.png",
-			link: "/",
-		},
-		{
-			category: "Starwars Shatterpoint",
-			url: "https://images.squarespace-cdn.com/content/v1/5ce432b1f9d2be000134d8ae/1677518943833-7DBZCP5TJSF7PZY1IWJH/SWP01_Group_FB%252B%2525282%252529.jpg?format=2500w",
-			link: "/",
-		},
-		{
-			category: "Warhammer 40k",
-			url: "https://www.warhammer-community.com/wp-content/uploads/2023/03/ulc1yVv3Xx7efpjG.jpg",
-			link: "/",
-		},
-		{
-			category: "Warhammer AOS",
-			url: "https://ageofsigmar.com/wp-content/uploads/2021/05/iaBc1KdBGOoejO85-950x400.jpg",
-			link: "/",
-		},
-		{
-			category: "Pittura",
-			url: "https://www.phdgames.com/wp-content/uploads/2021/12/TAP_SpeedPaint_MegaSet_WebSlider.jpg",
-			link: "/",
-		},
-	];
-
 	return (
 		<>
 			<Navbar />
 			<Jumbotron />
-			<h1 className="text-3xl text-center bg-black text-white">
+			<h2 className="text-3xl text-center pb-4 pt-6 font-bold">
 				OFFERTE DELLA SETTIMANA
-			</h1>
-			<div className=" flex bg-orange-400 min-h-screen">
+			</h2>
+			<section className=" flex">
 				<div className=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
 					{products &&
 						promoProducts?.map((product) => (
@@ -64,13 +37,67 @@ const Home = () => {
 								category={product.category}
 								price={product.price}
 								description={product.description}
+								product={product}
 								key={nanoid()}
 							/>
 						))}
 				</div>
-			</div>
-			<div className="min-h-screen">
-				<Carousel images={images} />
+			</section>
+			<section>
+				<div className="custom my-2">
+					<a href="#">
+						<div className="bg-custom-image-url-paint h-full my-2 relative">
+							<p className="bg-white absolute bottom-1 right-1/2">Painting</p>
+						</div>
+					</a>
+				</div>
+				<div className="h-screen flex flex-col gap-2 mb-2">
+					<div className="flex h-1/2 gap-2">
+						<a className="h-full w-full" href="">
+							<div className="bg-custom-image-url-legion h-full relative">
+								<p className="bg-white absolute bottom-4 right-1/2">
+									Starwars Legion
+								</p>
+							</div>
+						</a>
+						<a className="h-full w-full" href="">
+							<div className="bg-custom-image-url-shatterpoint h-full relative">
+								<p className="bg-white absolute bottom-4 right-1/2">
+									Starwars Shatterpoint
+								</p>
+							</div>
+						</a>
+					</div>
+					<div className="flex h-1/2 gap-2">
+						<a className="h-full w-full" href="">
+							<div className="bg-custom-image-url-40k h-full relative">
+								<p className="bg-white absolute bottom-4 right-1/2">
+									Warhammer 40k
+								</p>
+							</div>
+						</a>
+						<a className="h-full w-full" href="">
+							<div className="bg-custom-image-url-AOS h-full relative">
+								<p className="bg-white absolute bottom-4 right-1/2">
+									Warhammer AOS
+								</p>
+							</div>
+						</a>
+					</div>
+				</div>
+			</section>
+			<h2 className="text-3xl text-center pb-4 pt-6 font-bold">
+				SPEED PAINTING TUTORIAL
+			</h2>
+			<div class="w-screen h-screen relative my-2">
+				<iframe
+					src="https://www.youtube.com/embed/ea3CKZyhDRE?si=yjQ4ViKTN_PU8z8a"
+					title="YouTube video player"
+					frameborder="0"
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+					allowfullscreen
+					class="absolute inset-0 w-full h-full"
+				></iframe>
 			</div>
 			<Footer />
 		</>

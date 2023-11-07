@@ -7,7 +7,7 @@ const NewProduct = () => {
 
 	const [formData, setFormData] = useState({
 		name: "",
-		category: "",
+		category: "Pittura",
 		description: "",
 		price: "",
 		promo: false,
@@ -90,10 +90,10 @@ const NewProduct = () => {
 						className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-500"
 					>
 						<option value="Pittura">Pittura</option>
-						<option value="Warhammer 40k">Warhammer 40k</option>
-						<option value="Warhammer AOS">Warhammer AOS</option>
-						<option value="Starwars Legion">Starwars Legion</option>
-						<option value="Starwars Shatterpoint">Starwars Shatterpoint</option>
+						<option value="Warhammer40k">Warhammer 40k</option>
+						<option value="WarhammerAOS">Warhammer AOS</option>
+						<option value="StarwarsLegion">Starwars Legion</option>
+						<option value="StarwarsShatterpoint">Starwars Shatterpoint</option>
 					</select>
 				</div>
 				<div className="mb-4">

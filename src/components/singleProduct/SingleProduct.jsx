@@ -1,12 +1,24 @@
 import React from "react";
+import { useCart } from "../context/CartContext";
 
-const SingleProduct = ({ name, category, description, price, cover }) => {
+const SingleProduct = ({
+	product,
+	name,
+	category,
+	description,
+	price,
+	cover,
+}) => {
+	const { dispatch } = useCart();
+	const handleAddToCart = () => {
+		dispatch({ type: "ADD_TO_CART", product });
+	};
 	return (
-		<div class="bg-yellow-400 border border-gray-800 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 w-50 flex flex-col justify-center items-center text-center">
-			<a href="#" className="h-1/2">
-				<img class="rounded-t-lg object-cover h-full" src={cover} alt="" />
+		<div class=" border border-gray-800 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 w-50 flex flex-col items-center text-center">
+			<a href="#" className="h-1/2 flex items-center">
+				<img class="rounded-t-lg object-cover max-h-full" src={cover} alt="" />
 			</a>
-			<div class="h-1/2">
+			<div class="h-1/3 pt-5">
 				<a href="#">
 					<h5 class="mb-2 text-2xl font-bold tracking-tight text-red-900 dark:text-white">
 						{name}
@@ -19,12 +31,7 @@ const SingleProduct = ({ name, category, description, price, cover }) => {
 					{description}
 				</p>
 				<p class="mb-3 font-bold text-gray-700 dark:text-gray-400">{price}€</p>
-				<a
-					href="#"
-					class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-				>
-					Add Cart
-				</a>
+				<button onClick={handleAddToCart}>Add to Cart</button>
 			</div>
 		</div>
 	);

@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "tailwindcss/tailwind.css";
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import StripeCheckout from "../stripeCheckOut/StripeCheckOut";
+import Cart from "../cart/Cart";
 
 const Navbar = () => {
 	const { isAuthenticated, setIsAuthenticated } = useAuth();
@@ -33,6 +35,7 @@ const Navbar = () => {
 						>
 							Logout
 						</button>
+						<StripeCheckout />
 					</div>
 				)}
 				{!isAuthenticated && (
@@ -78,7 +81,7 @@ const Navbar = () => {
 				<ul className="font-medium flex flex-col justify-center p-4 md:p-0 mt-4 border border-gray-100 bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
 					<li>
 						<a
-							href="/pittura"
+							href="/products/Pittura"
 							className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover-text-blue-500 dark:hover:bg-gray-700 dark:hover-text-white md:dark:hover-bg-transparent"
 						>
 							Pittura
@@ -86,7 +89,7 @@ const Navbar = () => {
 					</li>
 					<li>
 						<a
-							href="/warhammer40k"
+							href="/products/Warhammer40k"
 							className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover-text-blue-500 dark:hover:bg-gray-700 dark:hover-text-white md:dark:hover-bg-transparent"
 						>
 							Warhammer 40k
@@ -94,7 +97,7 @@ const Navbar = () => {
 					</li>
 					<li>
 						<a
-							href="/warhammeraos"
+							href="/products/WarhammerAOS"
 							className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover-text-blue-500 dark:hover:bg-gray-700 dark:hover-text-white md:dark:hover-bg-transparent"
 						>
 							Warhammer AOS
@@ -102,7 +105,7 @@ const Navbar = () => {
 					</li>
 					<li>
 						<a
-							href="/starwarslegion"
+							href="/products/StarwarsLegion"
 							className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover-text-blue-500 dark:hover:bg-gray-700 dark:hover-text-white md:dark:hover-bg-transparent"
 						>
 							Starwars Legion
@@ -110,7 +113,7 @@ const Navbar = () => {
 					</li>
 					<li>
 						<a
-							href="/starwarsshatterpoint"
+							href="/products/StarwarsShatterpoint"
 							className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover-text-blue-500 dark:hover:bg-gray-700 dark:hover-text-white md:dark:hover-bg-transparent"
 						>
 							Starwars Shatterpoint
