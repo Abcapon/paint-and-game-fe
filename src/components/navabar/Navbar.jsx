@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "tailwindcss/tailwind.css";
-import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-import StripeCheckout from "../stripeCheckOut/StripeCheckOut";
-import Cart from "../cart/Cart";
+import { Link } from "react-router-dom";
+import { CartContext } from "../context/CartContext";
 
 const Navbar = () => {
 	const { isAuthenticated, setIsAuthenticated } = useAuth();
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+	const { cartItems } = useContext(CartContext);
+	console.log(cartItems);
 
 	const logout = async () => {
 		localStorage.clear();
@@ -15,9 +16,9 @@ const Navbar = () => {
 	};
 
 	return (
-		<nav className="bg-black border-gray-200 dark:bg-gray-900 text-white">
+		<nav className="bg-black border-gray-200 dark:bg-gray-900 text-white sticky top-0 z-50">
 			<div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-				<a href="/" className="flex items-center">
+				<Link to="/">
 					<img
 						src="https://flowbite.com/docs/images/logo.svg"
 						className="h-8 mr-3"
@@ -26,7 +27,7 @@ const Navbar = () => {
 					<span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
 						Paint & Game
 					</span>
-				</a>
+				</Link>
 				{isAuthenticated && (
 					<div className="font-medium  flex flex-col p-4 md:p-0 mt-4 md:flex-row md:space-x-8 md:mt-0 dark-bg-gray-800 md-dark-bg-gray-900 dark-border-gray-700">
 						<button
@@ -35,16 +36,19 @@ const Navbar = () => {
 						>
 							Logout
 						</button>
-						<StripeCheckout />
+						<Link to="/cart">
+							Carrello{" "}
+							<span className=" border-2 px-1">{cartItems.length}</span>
+						</Link>
 					</div>
 				)}
 				{!isAuthenticated && (
-					<a
-						href="/login"
+					<Link
+						to="/login"
 						className="block  pl-3 pr-4 text-white rounded  md:hover-bg-transparent md:border-0 md:hover-text-blue-700 md:p-0 dark-text-white md:dark:hover-text-blue-500 dark:hover-bg-gray-700 dark:hover-text-white md:dark:hover-bg-transparent"
 					>
 						Login
-					</a>
+					</Link>
 				)}
 				<button
 					data-collapse-toggle="navbar-default"
@@ -80,54 +84,54 @@ const Navbar = () => {
 			>
 				<ul className="font-medium flex flex-col justify-center p-4 md:p-0 mt-4 border border-gray-100 bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
 					<li>
-						<a
-							href="/products/Pittura"
+						<Link
+							to="/products/Pittura"
 							className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover-text-blue-500 dark:hover:bg-gray-700 dark:hover-text-white md:dark:hover-bg-transparent"
 						>
 							Pittura
-						</a>
+						</Link>
 					</li>
 					<li>
-						<a
-							href="/products/Warhammer40k"
+						<Link
+							to="/products/Warhammer40k"
 							className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover-text-blue-500 dark:hover:bg-gray-700 dark:hover-text-white md:dark:hover-bg-transparent"
 						>
 							Warhammer 40k
-						</a>
+						</Link>
 					</li>
 					<li>
-						<a
-							href="/products/WarhammerAOS"
+						<Link
+							to="/products/WarhammerAOS"
 							className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover-text-blue-500 dark:hover:bg-gray-700 dark:hover-text-white md:dark:hover-bg-transparent"
 						>
 							Warhammer AOS
-						</a>
+						</Link>
 					</li>
 					<li>
-						<a
-							href="/products/StarwarsLegion"
+						<Link
+							to="/products/StarwarsLegion"
 							className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover-text-blue-500 dark:hover:bg-gray-700 dark:hover-text-white md:dark:hover-bg-transparent"
 						>
 							Starwars Legion
-						</a>
+						</Link>
 					</li>
 					<li>
-						<a
-							href="/products/StarwarsShatterpoint"
+						<Link
+							to="/products/StarwarsShatterpoint"
 							className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover-text-blue-500 dark:hover:bg-gray-700 dark:hover-text-white md:dark:hover-bg-transparent"
 						>
 							Starwars Shatterpoint
-						</a>
+						</Link>
 					</li>
 
 					{isAuthenticated && (
 						<div className="font-medium flex flex-col md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark-bg-gray-800 md-dark-bg-gray-900 dark-border-gray-700">
-							<a
-								href="/product"
+							<Link
+								to="/product"
 								className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover-text-blue-500 dark:hover:bg-gray-700 dark:hover-text-white md:dark:hover-bg-transparent"
 							>
 								New product
-							</a>
+							</Link>
 						</div>
 					)}
 				</ul>

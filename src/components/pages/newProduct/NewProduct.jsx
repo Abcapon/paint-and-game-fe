@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -13,10 +13,7 @@ const NewProduct = () => {
 		promo: false,
 	});
 
-	console.log(formData);
-
 	const [cover, setCover] = useState(null);
-	console.log(cover);
 
 	const handleFileChange = (e) => {
 		setCover(e.target.files[0]);
@@ -31,7 +28,6 @@ const NewProduct = () => {
 		fileData.append("description", formData.description);
 		fileData.append("price", formData.price);
 		fileData.append("promo", formData.promo);
-		console.log("Data to be sent to the server:", fileData);
 
 		try {
 			const response = await axios.post(

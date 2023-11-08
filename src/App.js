@@ -14,29 +14,40 @@ import About from "./components/pages/about/About";
 import Privacy from "./components/pages/privacy/Privacy";
 import SelectedCategory from "./components/pages/selectedCategory/SelectedCategory";
 import ErrorPage from "./components/pages/errorPage/ErrorPage";
+import Cart from "./components/cart/Cart";
+import Navbar from "./components/navabar/Navbar";
+import Footer from "./components/footer/Footer";
 
 function App() {
 	return (
-		<Router>
-			<CartProvider>
-				<AuthProvider>
-					<Routes>
-						<Route path="/user" element={<NewUser />} />
-						<Route exact path="/" element={<Home />} />
-						<Route path="/success/:token" element={<Success />} />
-						<Route path="/login" element={<LogIn />} />
-						<Route path="/contact" element={<Contact />} />
-						<Route path="/about" element={<About />} />
-						<Route path="/privacy" element={<Privacy />} />
-						<Route path="/products/:category" element={<SelectedCategory />} />
-						<Route element={<ProtectedRoutes />}>
-							<Route path="/product" element={<NewProduct />} />
-						</Route>
-						<Route path="*" element={<ErrorPage />} />
-					</Routes>
-				</AuthProvider>
-			</CartProvider>
-		</Router>
+		<>
+			<Router>
+				<CartProvider>
+					<AuthProvider>
+						<Navbar />
+						<Routes>
+							<Route path="/user" element={<NewUser />} />
+							<Route exact path="/" element={<Home />} />
+							<Route path="/success/:token" element={<Success />} />
+							<Route path="/login" element={<LogIn />} />
+							<Route path="/contact" element={<Contact />} />
+							<Route path="/about" element={<About />} />
+							<Route path="/privacy" element={<Privacy />} />
+							<Route
+								path="/products/:category"
+								element={<SelectedCategory />}
+							/>
+							<Route path="/cart" element={<Cart />} />
+							<Route element={<ProtectedRoutes />}>
+								<Route path="/product" element={<NewProduct />} />
+							</Route>
+							<Route path="*" element={<ErrorPage />} />
+						</Routes>
+						<Footer />
+					</AuthProvider>
+				</CartProvider>
+			</Router>
+		</>
 	);
 }
 

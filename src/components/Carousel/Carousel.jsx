@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Carousel = ({ images }) => {
 	const [currentSlide, setCurrentSlide] = useState(0);
@@ -35,12 +36,12 @@ const Carousel = ({ images }) => {
 								className="object-cover w-full h-full myImg"
 								alt="..."
 							/>
-							<a
-								href={image.link}
+							<Link
+								to={image.link}
 								className="absolute bottom-10 left-1/3 rounded px-2 bg-white text-center w-96"
 							>
 								{image.category}
-							</a>
+							</Link>
 						</div>
 					))}
 				</div>

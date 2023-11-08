@@ -1,48 +1,36 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import { loadStripe } from "@stripe/stripe-js";
+import {
+	EmbeddedCheckoutProvider,
+	EmbeddedCheckout,
+} from "@stripe/react-stripe-js";
 
-const StripeCheckout = () => {
+const stripePromise = loadStripe("pk_test_123");
+
+function StripeCheckout() {
+	const [clientSecret, setClientSecret] = useState("");
+
 	useEffect(() => {
-		const loadStripe = async () => {
-			const stripe = await import("@stripe/stripe-js");
-			const { error } = await stripe.loadStripe(
-				process.env.REACT_APP_STRIPE_PUBLIC_KEY
-			);
-
-			if (error) {
-				console.error("Errore nel caricamento di Stripe:", error);
-				return;
-			}
-
-			const stripeInstance = await stripe.createStripe(
-				process.env.REACT_APP_STRIPE_PUBLIC_KEY
-			);
-
-			const handleClick = async () => {
-				const { error } = await stripe.redirectToCheckout({
-					sessionId: "SESSION_ID",
-				});
-
-				if (error) {
-					console.error("Errore durante il redirect a Stripe Checkout:", error);
-				}
-			};
-
-			document
-				.getElementById("checkout-button")
-				.addEventListener("click", handleClick);
-		};
-
-		loadStripe();
+		// Esegui la richiesta al server Stripe o a un'altra fonte affidabile
+		fetch("/get-client-secret", {
+			method: "POST",
+			// Altre opzioni della richiesta, come il corpo della richiesta, se necessario
+		})
+			.then((res) => res.json())
+			.then((data) => setClientSecret(data.clientSecret));
 	}, []);
 
+	const options = { clientSecret };
+
 	return (
-		<div>
-			<button id="checkout-button" className="text-white">
-				Paga ora
-			</button>
-			<div id="success-message"></div>
+		<div id="checkout">
+			{clientSecret && (
+				<EmbeddedCheckoutProvider stripe={stripePromise} options={options}>
+					<EmbeddedCheckout />
+				</EmbeddedCheckoutProvider>
+			)}
 		</div>
 	);
-};
+}
 
 export default StripeCheckout;
