@@ -22,6 +22,13 @@ import StripeContainer from "./components/stripeContainer/StripeContainer";
 
 import PaymentComplete from "./components/pages/paymentComplete/PaymentComplete";
 
+if (process.env.NODE_ENV === "development") {
+	// Imposta la variabile di ambiente REACT_APP_ALLOW_UNSAFE_REQUESTS a "true" durante lo sviluppo
+	if (process.env.REACT_APP_ALLOW_UNSAFE_REQUESTS === "true") {
+		window.location.protocol = "http:";
+	}
+}
+
 function App() {
 	return (
 		<>
