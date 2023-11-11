@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import { CartContext } from "../context/CartContext";
-import { FaTrash } from "react-icons/fa";
 
 const Cart = () => {
 	const { cartItems, addToCart, removeFromCart, clearCart, getCartTotal } =
 		useContext(CartContext);
+
 	console.log(cartItems);
 
 	return (
@@ -46,7 +46,7 @@ const Cart = () => {
 					</div>
 				))}
 			</div>
-			{cartItems.length > 0 ? (
+			{cartItems.length > 0 && (
 				<div className="flex flex-col justify-between items-center">
 					<h1 className="text-lg font-bold">Total: €{getCartTotal()}</h1>
 					<button
@@ -58,7 +58,8 @@ const Cart = () => {
 						Svuota carrello
 					</button>
 				</div>
-			) : (
+			)}
+			{cartItems.length === 0 && (
 				<h1 className="text-lg font-bold">Il tuo carrello è vuoto</h1>
 			)}
 		</div>
@@ -66,3 +67,6 @@ const Cart = () => {
 };
 
 export default Cart;
+
+/*
+ */

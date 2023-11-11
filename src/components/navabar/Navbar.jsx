@@ -8,7 +8,6 @@ const Navbar = () => {
 	const { isAuthenticated, setIsAuthenticated } = useAuth();
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 	const { cartItems } = useContext(CartContext);
-	console.log(cartItems);
 
 	const logout = async () => {
 		localStorage.clear();

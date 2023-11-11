@@ -7,7 +7,7 @@ import axios from "axios";
 const LogIn = () => {
 	const [logInData, setLogInData] = useState({});
 	const [login, setLogin] = useState(null);
-	const { isAutenticated, setIsAuthenticated } = useAuth();
+	const { isAuthenticated, setIsAuthenticated } = useAuth();
 	const navigate = useNavigate();
 	console.log(logInData);
 

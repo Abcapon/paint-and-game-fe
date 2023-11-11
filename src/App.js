@@ -18,6 +18,10 @@ import Cart from "./components/cart/Cart";
 import Navbar from "./components/navabar/Navbar";
 import Footer from "./components/footer/Footer";
 
+import StripeContainer from "./components/stripeContainer/StripeContainer";
+
+import PaymentComplete from "./components/pages/paymentComplete/PaymentComplete";
+
 function App() {
 	return (
 		<>
@@ -38,6 +42,8 @@ function App() {
 								element={<SelectedCategory />}
 							/>
 							<Route path="/cart" element={<Cart />} />
+							<Route path="/checkout" element={<StripeContainer />} />
+							<Route path="/paymentcomplete" element={<PaymentComplete />} />
 							<Route element={<ProtectedRoutes />}>
 								<Route path="/product" element={<NewProduct />} />
 							</Route>
