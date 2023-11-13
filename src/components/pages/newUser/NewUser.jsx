@@ -11,38 +11,30 @@ const NewUser = () => {
 		email: "",
 		password: "",
 	});
-	console.log("FormData:", formData);
 
-	const [avatar, setAvatar] = useState(null);
-	console.log("Avatar:", avatar);
+	const [passwordVerifica, setPasswordVerifica] = useState("");
 
-	const handleFileChange = (e) => {
-		setAvatar(e.target.files[0]);
-	};
+	const [showPassword, setShowPassword] = useState(false);
 
 	const handleUpload = async (e) => {
 		e.preventDefault();
-		const fileData = new FormData();
-		fileData.append("avatar", avatar);
-		fileData.append("nome", formData.nome);
-		fileData.append("cognome", formData.cognome);
-		fileData.append("email", formData.email);
-		fileData.append("password", formData.password);
+
+		// Controlla che la password e la sua verifica siano uguali
+		if (formData.password !== passwordVerifica) {
+			alert("La password e la verifica password non corrispondono.");
+			return;
+		}
 
 		try {
 			const response = await axios.post(
 				`${process.env.REACT_APP_SERVER_BASE_URL}/users/create`,
-				fileData,
-				{
-					headers: {
-						"Content-Type": "multipart/form-data",
-					},
-				}
+				formData
 			);
 
 			if (response.status === 201) {
 				const newUser = response.data;
 				console.log("User created successfully:", newUser);
+				alert("richiesta inviata con successo, attesa di conferma email");
 				navigate("/login");
 			} else {
 				console.error("Error during user saving");
@@ -53,16 +45,20 @@ const NewUser = () => {
 	};
 
 	const handleInputChange = (e) => {
-		setFormData({ ...formData, [e.target.name]: e.target.value });
+		const { name, value } = e.target;
+
+		if (name === "password") {
+			setFormData({ ...formData, [name]: value });
+		} else if (name === "passwordVerifica") {
+			setPasswordVerifica(value);
+		} else {
+			setFormData({ ...formData, [name]: value });
+		}
 	};
 
 	return (
 		<div className="bg-gray-200 p-4">
-			<form
-				onSubmit={handleUpload}
-				className="mt-5 p-4 bg-white rounded-lg"
-				encType="multipart/form-data"
-			>
+			<form onSubmit={handleUpload} className="mt-5 p-4 bg-white rounded-lg">
 				<div className="mb-4">
 					<label className="block text-sm font-medium text-gray-700">
 						Nome
@@ -102,30 +98,45 @@ const NewUser = () => {
 						placeholder="Email"
 					/>
 				</div>
-				<div className="mb-4">
+				<div className="mb-4 relative">
 					<label className="block text-sm font-medium text-gray-700">
 						Password
 					</label>
 					<input
-						type="text"
+						type={showPassword ? "text" : "password"}
 						name="password"
 						value={formData.password}
 						onChange={handleInputChange}
 						className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-500"
 						placeholder="Password"
 					/>
+					<button
+						type="button"
+						onClick={() => setShowPassword(!showPassword)}
+						className="absolute inset-y-0 top-4 right-0 px-3 py-2"
+					>
+						{showPassword ? "👁️" : "👁️‍🗨️"}
+					</button>
 				</div>
-				<div className="mb-4">
+				<div className="mb-4 relative">
 					<label className="block text-sm font-medium text-gray-700">
-						File
+						Verifica Password
 					</label>
 					<input
-						type="file"
-						required
-						name="file"
-						onChange={handleFileChange}
-						className="w-full"
+						type={showPassword ? "text" : "password"}
+						name="passwordVerifica"
+						value={passwordVerifica}
+						onChange={handleInputChange}
+						className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-500"
+						placeholder="Verifica Password"
 					/>
+					<button
+						type="button"
+						onClick={() => setShowPassword(!showPassword)}
+						className="absolute inset-y-0 top-4 right-0 px-3 py-2"
+					>
+						{showPassword ? "👁️" : "👁️‍🗨️"}
+					</button>
 				</div>
 				<div className="flex justify-end gap-3">
 					<button

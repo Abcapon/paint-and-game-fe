@@ -14,9 +14,9 @@ import About from "./components/pages/about/About";
 import Privacy from "./components/pages/privacy/Privacy";
 import SelectedCategory from "./components/pages/selectedCategory/SelectedCategory";
 import ErrorPage from "./components/pages/errorPage/ErrorPage";
-import Cart from "./components/cart/Cart";
 import Navbar from "./components/navabar/Navbar";
 import Footer from "./components/footer/Footer";
+import Confirm from "./components/pages/confirm/Confirm";
 
 import StripeContainer from "./components/stripeContainer/StripeContainer";
 
@@ -44,11 +44,11 @@ function App() {
 							<Route path="/contact" element={<Contact />} />
 							<Route path="/about" element={<About />} />
 							<Route path="/privacy" element={<Privacy />} />
+							<Route path="confirm/:token" element={<Confirm />} />
 							<Route
 								path="/products/:category"
 								element={<SelectedCategory />}
 							/>
-							<Route path="/cart" element={<Cart />} />
 							<Route path="/checkout" element={<StripeContainer />} />
 							<Route path="/paymentcomplete" element={<PaymentComplete />} />
 							<Route element={<ProtectedRoutes />}>

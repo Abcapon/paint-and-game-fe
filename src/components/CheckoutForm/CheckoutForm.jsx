@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import {
 	PaymentElement,
 	useStripe,
 	useElements,
 } from "@stripe/react-stripe-js";
+import { CartContext } from "../context/CartContext";
 
 export default function CheckoutForm() {
 	const stripe = useStripe();
@@ -11,6 +12,8 @@ export default function CheckoutForm() {
 
 	const [message, setMessage] = useState(null);
 	const [isLoading, setIsLoading] = useState(false);
+
+	const { cartItems } = useContext(CartContext);
 
 	useEffect(() => {
 		if (!stripe) {
@@ -81,15 +84,34 @@ export default function CheckoutForm() {
 	};
 
 	return (
-		<form id="payment-form" onSubmit={handleSubmit}>
-			<PaymentElement id="payment-element" options={paymentElementOptions} />
-			<button disabled={isLoading || !stripe || !elements} id="submit">
-				<span id="button-text">
-					{isLoading ? <div className="spinner" id="spinner"></div> : "Pay now"}
-				</span>
-			</button>
-			{/* Show any error or success messages */}
-			{message && <div id="payment-message">{message}</div>}
-		</form>
+		<div className=" flex items-center justify-center">
+			{cartItems.length > 0 && (
+				<form
+					id="payment-form"
+					className="my-3 p-4 bg-white rounded-lg w-1/3 text-end"
+					onSubmit={handleSubmit}
+				>
+					<PaymentElement
+						id="payment-element"
+						options={paymentElementOptions}
+					/>
+					<button
+						class=" text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 my-3"
+						disabled={isLoading || !stripe || !elements}
+						id="submit"
+					>
+						<span id="button-text">
+							{isLoading ? (
+								<div className="spinner" id="spinner"></div>
+							) : (
+								"Pay now"
+							)}
+						</span>
+					</button>
+					{/* Show any error or success messages */}
+					{message && <div id="payment-message">{message}</div>}
+				</form>
+			)}
+		</div>
 	);
 }

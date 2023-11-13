@@ -3,12 +3,10 @@ import { useParams } from "react-router-dom";
 import useGetProducts from "../../hooks/getProducts";
 import SingleProduct from "../../singleProduct/SingleProduct";
 import { nanoid } from "nanoid";
-import Cart from "../../cart/Cart";
 
 const SelectedCategory = () => {
 	const { category } = useParams("");
 
-	const [productData, setProductData] = useState(null);
 	const [currentPage, setCurrentPage] = useState(1);
 	const products = useGetProducts(currentPage);
 

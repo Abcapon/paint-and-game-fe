@@ -35,7 +35,7 @@ const Navbar = () => {
 						>
 							Logout
 						</button>
-						<Link to="/cart">
+						<Link to="/checkout">
 							Carrello{" "}
 							<span className=" border-2 px-1">{cartItems.length}</span>
 						</Link>
