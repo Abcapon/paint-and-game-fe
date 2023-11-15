@@ -1,25 +1,22 @@
 import React, { useState } from "react";
 import "tailwindcss/tailwind.css";
-import useGetProducts from "../../hooks/getProducts";
+import useGetProductsPromo from "../../hooks/getProductsPromo";
 import SingleProduct from "../../singleProduct/SingleProduct";
 import { nanoid } from "nanoid";
 import Jumbotron from "../../jumbotron/Jumbotron";
 import { Link } from "react-router-dom";
 import "./style.css";
-import Pagination from "react-responsive-pagination";
+import ReactPaginate from "react-paginate";
 
 const Home = () => {
 	const [currentPage, setCurrentPage] = useState(1);
-	const products = useGetProducts(currentPage, 4);
+	const products = useGetProductsPromo(currentPage);
+	console.log("products:", products);
 
 	const totalPages = products.totalPages;
 
-	const promoProducts = products?.products?.filter(
-		(product) => product?.isInPromo
-	);
-
-	const handlePageChange = (newPage) => {
-		setCurrentPage(newPage);
+	const handlePageChange = ({ selected }) => {
+		setCurrentPage(selected + 1);
 	};
 
 	return (
@@ -31,7 +28,7 @@ const Home = () => {
 			<section className="flex flex-col ">
 				<div className="px-2 flex flex-wrap gap-4 justify-center items-stretch container mx-auto">
 					{products &&
-						promoProducts?.map((product) => (
+						products.products?.map((product) => (
 							<SingleProduct
 								id={product._id}
 								cover={product.cover}
@@ -39,15 +36,20 @@ const Home = () => {
 								category={product.category}
 								price={product.price}
 								description={product.description}
+								isInPromo={product.isInPromo}
 								product={product}
 								key={nanoid()}
 							/>
 						))}
 				</div>
-				<Pagination
-					current={currentPage}
-					total={totalPages}
+				<ReactPaginate
+					pageCount={totalPages}
+					pageRangeDisplayed={3}
+					marginPagesDisplayed={1}
 					onPageChange={handlePageChange}
+					containerClassName="pagination"
+					subContainerClassName="pages pagination"
+					activeClassName="active"
 					className="flex self-center gap-4"
 				/>
 			</section>

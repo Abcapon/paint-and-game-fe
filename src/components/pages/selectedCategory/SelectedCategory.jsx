@@ -1,39 +1,51 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import useGetProducts from "../../hooks/getProducts";
+import useGetCategoryProducts from "../../hooks/getProductsCategory";
 import SingleProduct from "../../singleProduct/SingleProduct";
 import { nanoid } from "nanoid";
+import ReactPaginate from "react-paginate";
 
 const SelectedCategory = () => {
 	const { category } = useParams("");
 
 	const [currentPage, setCurrentPage] = useState(1);
-	const products = useGetProducts(currentPage);
+	const products = useGetCategoryProducts(category, currentPage);
 
-	const filteredProducts = products?.products?.filter(
-		(product) => product?.category === category
-	);
+	const totalPages = products.totalPages;
+
+	const handlePageChange = ({ selected }) => {
+		setCurrentPage(selected + 1);
+	};
 
 	return (
 		<div className="min-h-screen">
-			<h2 className="text-3xl text-center pb-4 pt-6 font-bold">
-				Warhammer 40k
-			</h2>
-			<session className=" flex">
-				<div className=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+			<h2 className="text-3xl text-center pb-4 pt-6 font-bold">{category}</h2>
+			<session className=" flex flex-col">
+				<div className=" px-2 flex flex-wrap gap-4 justify-center container mx-auto">
 					{products &&
-						filteredProducts?.map((product) => (
+						products.products?.map((product) => (
 							<SingleProduct
 								cover={product.cover}
 								name={product.name}
 								category={product.category}
 								price={product.price}
 								description={product.description}
+								isInPromo={product.isInPromo}
 								product={product}
 								key={nanoid()}
 							/>
 						))}
 				</div>
+				<ReactPaginate
+					pageCount={totalPages}
+					pageRangeDisplayed={3}
+					marginPagesDisplayed={1}
+					onPageChange={handlePageChange}
+					containerClassName="pagination"
+					subContainerClassName="pages pagination"
+					activeClassName="active"
+					className="flex self-center gap-4"
+				/>
 			</session>
 		</div>
 	);

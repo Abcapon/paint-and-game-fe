@@ -16,6 +16,7 @@ const SingleProduct = ({
 	description,
 	price,
 	cover,
+	isInPromo,
 }) => {
 	const { cartItems, addToCart } = useContext(CartContext);
 	const [isAdmin, setIsAdmin] = useState(false);
@@ -66,7 +67,7 @@ const SingleProduct = ({
 					alt=""
 				/>
 			</Link>
-			<div class="h-1/3 pt-5">
+			<div class=" pt-5">
 				<Link to="#">
 					<h5 class="text-2xl font-bold tracking-tight text-red-900 dark:text-white min-h-[70px]">
 						{name}
@@ -78,7 +79,10 @@ const SingleProduct = ({
 				<p class="mb-3 font-normal text-gray-700 dark:text-gray-400 truncate max-w-xs overflow-hidden">
 					{description}
 				</p>
-				<p class="mb-3 font-bold text-gray-700 dark:text-gray-400">{price}€</p>
+				<p class="mb-3 font-bold text-gray-700 dark:text-gray-400">
+					{isInPromo && <p className="text-red-500">Special Price:</p>}
+					{price}€
+				</p>
 				<div className="mb-4">
 					<button
 						onClick={() => addToCart(product)}
@@ -87,14 +91,14 @@ const SingleProduct = ({
 						Add to cart
 					</button>
 					{isAdmin && (
-						<div className="flex pt-2">
+						<div className="flex flex-col pt-2">
 							<button
-								className="px-4 py-2 bg-red-600 text-white text-xs font-bold uppercase rounded hover:bg-red-800 focus:outline-none focus:bg-gray-700 mx-1"
+								className="px-4 py-2 bg-red-600 text-white text-xs font-bold uppercase rounded hover:bg-red-800 focus:outline-none focus:bg-gray-700 my-1"
 								onClick={() => handleDelete(id)}
 							>
 								Elimina prodotto
 							</button>
-							<button className="px-4 py-2 bg-yellow-400 text-white text-xs font-bold uppercase rounded hover:bg-yellow-600 focus:outline-none focus:bg-gray-700 mx-1">
+							<button className="px-4 py-2 bg-yellow-400 text-white text-xs font-bold uppercase rounded hover:bg-yellow-600 focus:outline-none focus:bg-gray-700 my-1">
 								Modifica prodotto
 							</button>
 						</div>

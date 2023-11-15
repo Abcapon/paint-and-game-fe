@@ -1,4 +1,6 @@
+creare form di modifica prodotto
 inserimento * e testo rosso nei campi errati o assenti nei form
 rendere navbar più responsive
+creare pagine di descrizione prodotto
 verificare payment complete logica per svuotare carrello e abbellire pagina
 rendere card più responsivie
