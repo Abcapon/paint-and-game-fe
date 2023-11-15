@@ -1,7 +1,20 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useSession } from "../hooks/useSession";
 
 const Footer = () => {
+	const [isAdmin, setIsAdmin] = useState(false);
+
+	const session = useSession();
+
+	useEffect(() => {
+		if (session && session.role === "admin") {
+			setIsAdmin(true);
+		} else {
+			setIsAdmin(false);
+		}
+	}, [session]);
+
 	return (
 		<footer class="rounded-lg shadow dark:bg-gray-800 bg-yellow-200">
 			<div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
@@ -20,10 +33,17 @@ const Footer = () => {
 						</Link>
 					</li>
 					<li>
-						<Link to="/contact" class="hover:underline">
+						<Link to="/contact" class="hover:underline md:mr-6">
 							Contact
 						</Link>
 					</li>
+					{isAdmin && (
+						<li>
+							<Link to="/promote/admin" class="hover:underline">
+								Add admin
+							</Link>
+						</li>
+					)}
 				</ul>
 			</div>
 			<p class="text-white bg-red-600 p-5">

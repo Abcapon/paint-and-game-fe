@@ -14,8 +14,6 @@ const SelectedCategory = () => {
 		(product) => product?.category === category
 	);
 
-	console.log(filteredProducts);
-
 	return (
 		<div className="min-h-screen">
 			<h2 className="text-3xl text-center pb-4 pt-6 font-bold">

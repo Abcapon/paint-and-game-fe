@@ -3,17 +3,18 @@ import {
 	PaymentElement,
 	useStripe,
 	useElements,
+	LinkAuthenticationElement,
+	AddressElement,
 } from "@stripe/react-stripe-js";
 import { CartContext } from "../context/CartContext";
 
 export default function CheckoutForm() {
 	const stripe = useStripe();
 	const elements = useElements();
+	const { cartItems } = useContext(CartContext);
 
 	const [message, setMessage] = useState(null);
 	const [isLoading, setIsLoading] = useState(false);
-
-	const { cartItems } = useContext(CartContext);
 
 	useEffect(() => {
 		if (!stripe) {
@@ -91,6 +92,13 @@ export default function CheckoutForm() {
 					className="my-3 p-4 bg-white rounded-lg w-1/3 text-end"
 					onSubmit={handleSubmit}
 				>
+					<h3>Contact Info</h3>
+					<LinkAuthenticationElement />
+					<h3>Shipping</h3>
+					<AddressElement
+						options={{ mode: "billing", allowedCountries: ["IT"] }}
+					/>
+					<h3>Payment</h3>
 					<PaymentElement
 						id="payment-element"
 						options={paymentElementOptions}

@@ -6,6 +6,7 @@ import Home from "./components/pages/home/Home";
 import { AuthProvider } from "./components/context/AuthContext";
 import { CartProvider } from "./components/context/CartContext";
 import ProtectedRoutes from "./components/middlewares/ProtectedRoute";
+import ProtectedAdminRoutes from "./components/middlewares/AdminRoute";
 import LogIn from "./components/pages/logIn/Login";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Success from "./components/pages/success/Success";
@@ -17,6 +18,8 @@ import ErrorPage from "./components/pages/errorPage/ErrorPage";
 import Navbar from "./components/navabar/Navbar";
 import Footer from "./components/footer/Footer";
 import Confirm from "./components/pages/confirm/Confirm";
+
+import PromoteAdmin from "./components/pages/promoteAdmin/PromoteAdmin";
 
 import StripeContainer from "./components/stripeContainer/StripeContainer";
 
@@ -49,10 +52,13 @@ function App() {
 								path="/products/:category"
 								element={<SelectedCategory />}
 							/>
-							<Route path="/checkout" element={<StripeContainer />} />
 							<Route path="/paymentcomplete" element={<PaymentComplete />} />
-							<Route element={<ProtectedRoutes />}>
+							<Route element={<ProtectedAdminRoutes />}>
+								<Route path="/promote/admin" element={<PromoteAdmin />} />
 								<Route path="/product" element={<NewProduct />} />
+							</Route>
+							<Route element={<ProtectedRoutes />}>
+								<Route path="/checkout" element={<StripeContainer />} />
 							</Route>
 							<Route path="*" element={<ErrorPage />} />
 						</Routes>

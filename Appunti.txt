@@ -1,5 +1,4 @@
-il form che contiene l'indirizzo a cui spedire se chiuso e riaperto perde il suo contenuto;
-valutare se eliminare login con github 50%
 inserimento * e testo rosso nei campi errati o assenti nei form
 rendere navbar più responsive
+verificare payment complete logica per svuotare carrello e abbellire pagina
 rendere card più responsivie

@@ -1,17 +1,40 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import "tailwindcss/tailwind.css";
 import { useAuth } from "../context/AuthContext";
 import { Link } from "react-router-dom";
+import { useSession } from "../hooks/useSession";
 import { CartContext } from "../context/CartContext";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
 	const { isAuthenticated, setIsAuthenticated } = useAuth();
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 	const { cartItems } = useContext(CartContext);
+	const [isAdmin, setIsAdmin] = useState(false);
+	const navigate = useNavigate();
+
+	const session = useSession();
+
+	useEffect(() => {
+		if (session && session.role === "admin") {
+			setIsAdmin(true);
+		} else {
+			setIsAdmin(false);
+		}
+	}, [session]);
 
 	const logout = async () => {
 		localStorage.clear();
 		setIsAuthenticated(false);
+	};
+
+	const handleCart = () => {
+		if (!isAuthenticated) {
+			alert("Per accedere al carrello devi effettuare il login");
+			navigate(`/login`);
+		} else {
+			navigate(`/checkout`);
+		}
 	};
 
 	return (
@@ -27,28 +50,31 @@ const Navbar = () => {
 						Paint & Game
 					</span>
 				</Link>
-				{isAuthenticated && (
-					<div className="font-medium  flex flex-col p-4 md:p-0 mt-4 md:flex-row md:space-x-8 md:mt-0 dark-bg-gray-800 md-dark-bg-gray-900 dark-border-gray-700">
+				<div className="font-medium  flex flex-col p-4 md:p-0 mt-4 md:flex-row md:space-x-8 md:mt-0 dark-bg-gray-800 md-dark-bg-gray-900 dark-border-gray-700">
+					{isAuthenticated && (
 						<button
 							onClick={logout}
 							className="block pb-3 md:pb0 pl-3 pr-4 text-white rounded hover-bg-gray-100 md:hover-bg-transparent md:border-0 md:hover-text-blue-700 md:p-0 dark-text-white md-dark-hover-text-blue-500 dark-hover-bg-gray-700 dark-hover-text-white md-dark-hover-bg-transparent"
 						>
 							Logout
 						</button>
-						<Link to="/checkout">
-							Carrello{" "}
-							<span className=" border-2 px-1">{cartItems.length}</span>
+					)}
+					{!isAuthenticated && (
+						<Link
+							to="/login"
+							className="block  pl-3 pr-4 text-white rounded  md:hover-bg-transparent md:border-0 md:hover-text-blue-700 md:p-0 dark-text-white md:dark:hover-text-blue-500 dark:hover-bg-gray-700 dark:hover-text-white md:dark:hover-bg-transparent"
+						>
+							Login
 						</Link>
-					</div>
-				)}
-				{!isAuthenticated && (
-					<Link
-						to="/login"
-						className="block  pl-3 pr-4 text-white rounded  md:hover-bg-transparent md:border-0 md:hover-text-blue-700 md:p-0 dark-text-white md:dark:hover-text-blue-500 dark:hover-bg-gray-700 dark:hover-text-white md:dark:hover-bg-transparent"
+					)}
+					<button
+						onClick={handleCart}
+						className="font-medium p-4 md:p-0 md:flex-row md:space-x-8 md:mt-0 dark-bg-gray-800 md-dark-bg-gray-900 dark-border-gray-700"
 					>
-						Login
-					</Link>
-				)}
+						Carrello{" "}
+						<span className=" border-2 mx-2 px-2 pb-1">{cartItems.length}</span>
+					</button>
+				</div>
 				<button
 					data-collapse-toggle="navbar-default"
 					type="button"
@@ -123,7 +149,7 @@ const Navbar = () => {
 						</Link>
 					</li>
 
-					{isAuthenticated && (
+					{isAdmin && (
 						<div className="font-medium flex flex-col md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark-bg-gray-800 md-dark-bg-gray-900 dark-border-gray-700">
 							<Link
 								to="/product"
