@@ -42,16 +42,18 @@ const Home = () => {
 							/>
 						))}
 				</div>
-				<ReactPaginate
-					pageCount={totalPages}
-					pageRangeDisplayed={3}
-					marginPagesDisplayed={1}
-					onPageChange={handlePageChange}
-					containerClassName="pagination"
-					subContainerClassName="pages pagination"
-					activeClassName="active"
-					className="flex self-center gap-4"
-				/>
+				{totalPages > 1 && (
+					<ReactPaginate
+						pageCount={totalPages}
+						pageRangeDisplayed={3}
+						marginPagesDisplayed={1}
+						onPageChange={handlePageChange}
+						containerClassName="pagination"
+						subContainerClassName="pages pagination"
+						activeClassName="active"
+						className="flex self-center gap-4"
+					/>
+				)}
 			</section>
 			<section className="p-2">
 				<div className="custom my-2">

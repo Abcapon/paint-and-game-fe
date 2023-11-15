@@ -12,6 +12,7 @@ const SelectedCategory = () => {
 	const products = useGetCategoryProducts(category, currentPage);
 
 	const totalPages = products.totalPages;
+	console.log("totalPages", totalPages);
 
 	const handlePageChange = ({ selected }) => {
 		setCurrentPage(selected + 1);
@@ -36,16 +37,18 @@ const SelectedCategory = () => {
 							/>
 						))}
 				</div>
-				<ReactPaginate
-					pageCount={totalPages}
-					pageRangeDisplayed={3}
-					marginPagesDisplayed={1}
-					onPageChange={handlePageChange}
-					containerClassName="pagination"
-					subContainerClassName="pages pagination"
-					activeClassName="active"
-					className="flex self-center gap-4"
-				/>
+				{totalPages > 1 && (
+					<ReactPaginate
+						pageCount={totalPages}
+						pageRangeDisplayed={3}
+						marginPagesDisplayed={1}
+						onPageChange={handlePageChange}
+						containerClassName="pagination"
+						subContainerClassName="pages pagination"
+						activeClassName="active"
+						className="flex self-center gap-4"
+					/>
+				)}
 			</session>
 		</div>
 	);
