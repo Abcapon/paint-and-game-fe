@@ -189,6 +189,7 @@ const Navbar = () => {
 									? "bg-black text-yellow-300"
 									: "hover:bg-gray-100 md:hover:bg-black md:hover:bg-transparent md:hover:text-yellow-300"
 							}`}
+							onClick={handleCategoryClick}
 						>
 							Warhammer AOS
 						</Link>
