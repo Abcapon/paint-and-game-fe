@@ -1,10 +1,10 @@
-1. selezione fixed delle categorie nella navbar:
-quando sono selected backgroung nero e testo bianco (se riesci a farlo, togli il titolo dalla pagina ma mantieni il margine)
+
 
 2. scroll automatico verso alto quando si cambia pagina
 
 3. Non far sparire aggiungi admin da footer
 
-EXTRA
-mettere banner
+sistemare carrello mobile
+far rimanere prodotti in carrello quando si effettua login
+mettere banner (login)
 sistemare animazioni

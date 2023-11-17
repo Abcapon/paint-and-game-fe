@@ -62,7 +62,8 @@ export default function CheckoutForm() {
 			elements,
 			confirmParams: {
 				// Make sure to change this to your payment completion page
-				return_url: "http://localhost:3000/paymentcomplete",
+				return_url:
+					"https://hilarious-duckanoo-65dd6e.netlify.app//paymentcomplete",
 			},
 		});
 
