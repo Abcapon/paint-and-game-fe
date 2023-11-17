@@ -9,7 +9,7 @@ const Cart = () => {
 	const { isAuthenticated } = useAuth();
 
 	return (
-		<>
+		<section className="mt-10">
 			{!isAuthenticated && (
 				<div>
 					<h2 className="text-2xl font-bold text-center text-red-600 mt-10">
@@ -65,9 +65,9 @@ const Cart = () => {
 					</div>
 					{cartItems.length > 0 && (
 						<div className="flex flex-col justify-between items-center">
-							<h2 className="text-lg font-bold">Total: €{getCartTotal()}</h2>
+							<h2 className="text-lg font-bold">Totale: €{getCartTotal()}</h2>
 							<button
-								className="px-4 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded hover:bg-gray-700 focus:outline-none focus:bg-gray-700"
+								className="mt-5 px-4 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded hover:bg-gray-700 focus:outline-none focus:bg-gray-700"
 								onClick={() => {
 									clearCart();
 								}}
@@ -78,7 +78,7 @@ const Cart = () => {
 					)}
 				</div>
 			)}
-		</>
+		</section>
 	);
 };
 

@@ -57,8 +57,8 @@ const NewUser = () => {
 	};
 
 	return (
-		<div className="bg-gray-200 p-4">
-			<form onSubmit={handleUpload} className="mt-5 p-4 bg-white rounded-lg">
+		<div className="p-4 mt-10">
+			<form onSubmit={handleUpload} className="mt-5 p-4 bg-gray-200 rounded-lg">
 				<div className="mb-4">
 					<label className="block text-sm font-medium text-gray-700">
 						Nome
@@ -141,12 +141,12 @@ const NewUser = () => {
 				<div className="flex justify-end gap-3">
 					<button
 						type="submit"
-						className="px-4 py-2 rounded-lg border border-green-500 text-green-500 hover:bg-green-500 hover:text-white"
+						className="bg-white px-4 py-2 rounded-lg border border-green-500 text-green-500 hover:bg-green-500 hover:text-white"
 					>
-						Invia
+						Registrati
 					</button>
 					<Link to="/">
-						<button className="px-4 py-2 rounded-lg border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white">
+						<button className="bg-white px-4 py-2 rounded-lg border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white">
 							Chiudi
 						</button>
 					</Link>

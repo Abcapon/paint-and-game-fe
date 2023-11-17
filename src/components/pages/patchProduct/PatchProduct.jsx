@@ -1,28 +1,65 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
-const NewProduct = () => {
+const PatchProduct = () => {
 	const navigate = useNavigate();
+	const { id } = useParams();
+
+	const [product, setProduct] = useState({});
+	const [cover, setCover] = useState(null);
 
 	const [formData, setFormData] = useState({
 		name: "",
-		category: "Pittura",
+		category: "",
 		description: "",
 		price: "",
 		promo: false,
+		cover: null,
 	});
-
-	const [cover, setCover] = useState(null);
 
 	const handleFileChange = (e) => {
 		setCover(e.target.files[0]);
+		setFormData({ ...formData, cover: e.target.files[0] });
 	};
+
+	useEffect(() => {
+		const getProduct = async () => {
+			try {
+				const response = await axios.get(
+					`${process.env.REACT_APP_SERVER_BASE_URL}/products/${id}`
+				);
+				setProduct(response.data);
+
+				// Inizializza formData con i dati del prodotto
+				const { name, category, description, price, promo, cover } =
+					response.data.product;
+				setFormData({
+					name: name || "",
+					category: category || "",
+					description: description || "",
+					price: price || "",
+					promo: promo || false,
+					cover: cover || null, // Aggiunto il campo cover con valore iniziale null se non presente nei dati del prodotto
+				});
+				setCover(cover);
+			} catch (e) {
+				console.log(e);
+			}
+		};
+
+		getProduct();
+	}, [id]);
 
 	const handleUpload = async (e) => {
 		e.preventDefault();
+
 		const fileData = new FormData();
-		fileData.append("cover", cover);
+
+		if (cover) {
+			fileData.append("cover", cover);
+		}
+
 		fileData.append("name", formData.name);
 		fileData.append("category", formData.category);
 		fileData.append("description", formData.description);
@@ -30,8 +67,8 @@ const NewProduct = () => {
 		fileData.append("promo", formData.promo);
 
 		try {
-			const response = await axios.post(
-				`${process.env.REACT_APP_SERVER_BASE_URL}/products/create`,
+			const response = await axios.patch(
+				`${process.env.REACT_APP_SERVER_BASE_URL}/products/${id}`,
 				fileData,
 				{
 					headers: {
@@ -40,11 +77,12 @@ const NewProduct = () => {
 				}
 			);
 
-			if (response.status === 201) {
-				const newProduct = response.data;
+			if (response.status === 200) {
+				const updatedProduct = response.data.updatedProduct;
+				console.log("Product successfully updated:", updatedProduct);
 				navigate(`/`);
 			} else {
-				console.error("Error during product saving");
+				console.error("Error during product update");
 			}
 		} catch (error) {
 			console.log("Error during file saving:", error);
@@ -56,15 +94,15 @@ const NewProduct = () => {
 	};
 
 	return (
-		<div className="mt-10 p-4">
+		<div className="bg-gray-200 p-4">
 			<form
 				onSubmit={handleUpload}
-				className="mt-5 p-4 bg-gray-200 rounded-lg"
+				className="mt-5 p-4 bg-white rounded-lg"
 				encType="multipart/form-data"
 			>
 				<div className="mb-4">
 					<label className="block text-sm font-medium text-gray-700">
-						Nome
+						Name
 					</label>
 					<input
 						type="text"
@@ -72,7 +110,7 @@ const NewProduct = () => {
 						value={formData.name}
 						onChange={handleInputChange}
 						className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-500"
-						placeholder="Nome"
+						placeholder="Name"
 					/>
 				</div>
 				<div className="mb-4">
@@ -94,7 +132,7 @@ const NewProduct = () => {
 				</div>
 				<div className="mb-4">
 					<label className="block text-sm font-medium text-gray-700">
-						Descrizione
+						description
 					</label>
 					<input
 						type="text"
@@ -102,12 +140,12 @@ const NewProduct = () => {
 						value={formData.description}
 						onChange={handleInputChange}
 						className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-500"
-						placeholder="Descrizione"
+						placeholder="description"
 					/>
 				</div>
 				<div className="mb-4">
 					<label className="block text-sm font-medium text-gray-700">
-						Prezzo
+						price
 					</label>
 					<input
 						type="text"
@@ -115,7 +153,7 @@ const NewProduct = () => {
 						value={formData.price}
 						onChange={handleInputChange}
 						className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-500"
-						placeholder="Prezzo"
+						placeholder="price"
 					/>
 				</div>
 				<div className="mb-4">
@@ -124,7 +162,6 @@ const NewProduct = () => {
 					</label>
 					<input
 						type="file"
-						required
 						name="file"
 						onChange={handleFileChange}
 						className="w-full"
@@ -132,7 +169,7 @@ const NewProduct = () => {
 				</div>
 				<div className="mb-4">
 					<label className="block text-sm font-medium text-gray-700">
-						Prodotto in promo?
+						Is in promo?
 					</label>
 					<select
 						name="promo"
@@ -143,19 +180,19 @@ const NewProduct = () => {
 						}}
 						className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-500"
 					>
-						<option value="true">SI</option>
-						<option value="false">NO</option>
+						<option value="true">Vero</option>
+						<option value="false">Falso</option>
 					</select>
 				</div>
 				<div className="flex justify-end gap-3">
 					<button
 						type="submit"
-						className="bg-white px-4 py-2 rounded-lg border border-green-500 text-green-500 hover:bg-green-500 hover:text-white"
+						className="px-4 py-2 rounded-lg border border-green-500 text-green-500 hover:bg-green-500 hover:text-white"
 					>
-						Salva
+						Invia
 					</button>
 					<Link to="/">
-						<button className="bg-white px-4 py-2 rounded-lg border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white">
+						<button className="px-4 py-2 rounded-lg border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white">
 							Chiudi
 						</button>
 					</Link>
@@ -165,4 +202,4 @@ const NewProduct = () => {
 	);
 };
 
-export default NewProduct;
+export default PatchProduct;

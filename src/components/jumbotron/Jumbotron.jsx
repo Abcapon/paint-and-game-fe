@@ -9,15 +9,14 @@ const Jumbotron = () => {
 					Tutto ciò che ti serve per un'esperienza di pittura fantastica.
 				</h1>
 				<p class="mb-8 text-lg font-normal text-gray-300 lg:text-xl sm:px-16 lg:px-48">
-					Da noi puoi trovare tutto il necessario per rendere le tue campagne di
-					wargames EPICHE.
+					Rendi EPICHE le tue campagne di Wargames!
 				</p>
 
 				<Link
 					to="/about"
-					class="inline-flex justify-center hover:text-gray-900 items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg border border-white hover:bg-gray-100 focus:ring-4 focus:ring-gray-400"
+					class="inline-flex justify-center hover:text-gray-900 items-center py-3 px-5 text-base font-medium text-center text-black rounded-lg border border-black bg-yellow-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-400"
 				>
-					Learn more
+					Chi siamo
 				</Link>
 			</div>
 		</section>

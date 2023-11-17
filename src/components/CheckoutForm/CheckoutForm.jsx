@@ -92,19 +92,18 @@ export default function CheckoutForm() {
 					className="my-3 p-4 bg-white rounded-lg w-1/3 text-end"
 					onSubmit={handleSubmit}
 				>
-					<h3>Contact Info</h3>
+					<h3>Dati di spedizione</h3>
 					<LinkAuthenticationElement />
-					<h3>Shipping</h3>
 					<AddressElement
 						options={{ mode: "billing", allowedCountries: ["IT"] }}
 					/>
-					<h3>Payment</h3>
+					<h3 className="mt-5">Pagamento</h3>
 					<PaymentElement
 						id="payment-element"
 						options={paymentElementOptions}
 					/>
 					<button
-						class=" text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 my-3"
+						class=" text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mt-5"
 						disabled={isLoading || !stripe || !elements}
 						id="submit"
 					>
@@ -112,7 +111,7 @@ export default function CheckoutForm() {
 							{isLoading ? (
 								<div className="spinner" id="spinner"></div>
 							) : (
-								"Pay now"
+								"Paga ora"
 							)}
 						</span>
 					</button>

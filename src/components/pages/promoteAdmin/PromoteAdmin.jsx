@@ -27,7 +27,7 @@ const PromoteAdmin = () => {
 	};
 
 	return (
-		<div className="flex justify-center min-h-screen pt-10">
+		<div className="mt-10 flex justify-center min-h-screen pt-10">
 			<form onSubmit={onSubmit} className="text-center">
 				<div className="mb-6 text-center">
 					<input

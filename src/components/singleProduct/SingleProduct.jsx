@@ -3,10 +3,9 @@ import { CartContext } from "../context/CartContext";
 import { Link } from "react-router-dom";
 import { useSession } from "../hooks/useSession";
 import axios from "axios";
+import { motion } from "framer-motion";
 
-/*
 import { useNavigate } from "react-router-dom";
-*/
 
 const SingleProduct = ({
 	id,
@@ -18,12 +17,22 @@ const SingleProduct = ({
 	cover,
 	isInPromo,
 }) => {
-	const { cartItems, addToCart } = useContext(CartContext);
+	const { addToCart } = useContext(CartContext);
 	const [isAdmin, setIsAdmin] = useState(false);
 	const session = useSession();
-	/*
+
+	const [showAlert, setShowAlert] = useState(false);
+
+	const handleAddToCart = (product) => {
+		addToCart(product);
+		setShowAlert(true);
+		setTimeout(() => {
+			setShowAlert(false);
+		}, 1500);
+	};
+
 	const navigate = useNavigate();
-	*/
+
 	useEffect(() => {
 		if (session && session.role === "admin") {
 			setIsAdmin(true);
@@ -53,22 +62,21 @@ const SingleProduct = ({
 		} catch (error) {
 			console.error("Errore durante l'eliminazione del prodotto:", error);
 		}
-		/*
+
 		navigate(`/`);
-		*/
 	};
 
 	return (
-		<div class="flex-1 p-4 border border-gray-800 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 w-[350px] flex flex-col items-center text-center">
-			<Link to="#" className="h-1/2 flex items-center">
-				<img
-					class="rounded-t-lg object-cover max-h-[300px]"
-					src={cover}
-					alt=""
-				/>
+		<motion.div
+			whileHover={{ scale: [null, 1.05, 1.02] }}
+			transition={{ duration: 0.3 }}
+			class="box flex-1 p-4 border bg-white border-gray-800 rounded-lg hover:shadow-2xl dark:bg-gray-800 dark:border-gray-700 w-[350px] flex flex-col items-center text-center"
+		>
+			<Link to={`/description/${id}`} className="h-1/2 flex items-center">
+				<img class="rounded-t-lg object-cover w-[150px]" src={cover} alt="" />
 			</Link>
 			<div class=" pt-5">
-				<Link to="#">
+				<Link to={`/description/${id}`}>
 					<h5 class="text-2xl font-bold tracking-tight text-red-900 dark:text-white min-h-[70px]">
 						{name}
 					</h5>
@@ -80,16 +88,26 @@ const SingleProduct = ({
 					{description}
 				</p>
 				<p class="mb-3 font-bold text-gray-700 dark:text-gray-400">
-					{isInPromo && <p className="text-red-500">Special Price:</p>}
-					{price}€
+					{isInPromo && (
+						<p className="text-red-500">Offerta speciale {price}€</p>
+					)}
+					{!isInPromo && <p>{price}€</p>}
 				</p>
 				<div className="mb-4">
 					<button
-						onClick={() => addToCart(product)}
+						onClick={() => handleAddToCart(product)}
 						className="px-4 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded hover:bg-gray-700 focus:outline-none focus:bg-gray-700"
 					>
-						Add to cart
+						Aggiungi al carrello
 					</button>
+					{showAlert && (
+						<div
+							className="p-2 mb-4 text-sm text-green-600 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400"
+							role="alert"
+						>
+							<p>Prodotto aggiunto al carrello</p>
+						</div>
+					)}
 					{isAdmin && (
 						<div className="flex flex-col pt-2">
 							<button
@@ -98,14 +116,20 @@ const SingleProduct = ({
 							>
 								Elimina prodotto
 							</button>
-							<button className="px-4 py-2 bg-yellow-400 text-white text-xs font-bold uppercase rounded hover:bg-yellow-600 focus:outline-none focus:bg-gray-700 my-1">
+
+							<button
+								onClick={() =>
+									product && id && navigate(`/products/patch/${id}`)
+								}
+								className="px-4 py-2 bg-yellow-400 text-white text-xs font-bold uppercase rounded hover:bg-yellow-600 focus:outline-none focus:bg-gray-700 my-1"
+							>
 								Modifica prodotto
 							</button>
 						</div>
 					)}
 				</div>
 			</div>
-		</div>
+		</motion.div>
 	);
 };
 

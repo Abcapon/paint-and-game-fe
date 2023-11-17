@@ -1,33 +1,34 @@
 .bg-custom-image-url-paint {
-	background-image: url("https://www.phdgames.com/wp-content/uploads/2021/12/TAP_SpeedPaint_MegaSet_WebSlider.jpg");
+	background-image: url("/public/Sfondo.png");
 	background-size: cover;
 	background-position: center;
+	object-fit: contain;
 }
 
 .bg-custom-image-url-legion {
 	background-image: url("https://images.squarespace-cdn.com/content/v1/5ce432b1f9d2be000134d8ae/c942cfab-47c1-4b45-a2ee-9992f5a67079/DallasKemp-GAR-LAAT_Fullshot.png");
-	background-size: cover;
+	background-size: fill;
 	background-position: center;
+	object-fit: contain;
 }
 
 .bg-custom-image-url-shatterpoint {
 	background-image: url("https://images.squarespace-cdn.com/content/v1/5ce432b1f9d2be000134d8ae/1677518943833-7DBZCP5TJSF7PZY1IWJH/SWP01_Group_FB%252B%2525282%252529.jpg?format=2500w");
 	background-size: cover;
 	background-position: center;
+	object-fit: contain;
 }
 
 .bg-custom-image-url-40k {
 	background-image: url("https://www.warhammer-community.com/wp-content/uploads/2023/03/ulc1yVv3Xx7efpjG.jpg");
-	background-size: cover;
+	background-size: fill;
 	background-position: center;
+	object-fit: contain;
 }
 
 .bg-custom-image-url-AOS {
 	background-image: url("https://ageofsigmar.com/wp-content/uploads/2021/05/iaBc1KdBGOoejO85-950x400.jpg");
 	background-size: cover;
 	background-position: center;
-}
-
-.custom {
-	height: 50vh;
+	object-fit: contain;
 }
