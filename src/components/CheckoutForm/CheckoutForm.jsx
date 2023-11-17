@@ -63,7 +63,7 @@ export default function CheckoutForm() {
 			confirmParams: {
 				// Make sure to change this to your payment completion page
 				return_url:
-					"https://hilarious-duckanoo-65dd6e.netlify.app//paymentcomplete",
+					"https://hilarious-duckanoo-65dd6e.netlify.app/paymentcomplete",
 			},
 		});
 
