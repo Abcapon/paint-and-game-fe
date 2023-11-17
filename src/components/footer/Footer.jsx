@@ -4,16 +4,31 @@ import { useSession } from "../hooks/useSession";
 
 const Footer = () => {
 	const [isAdmin, setIsAdmin] = useState(false);
+	const [role, setRole] = useState(null);
+	console.log("role", role);
 
 	const session = useSession();
 
+	const handleLocalStorage = () => {
+		setRole(localStorage.getItem("loggedInUser"));
+	};
+
 	useEffect(() => {
-		if (session && session.role === "admin") {
+		/*
+		if (session && session?.role === "admin") {
 			setIsAdmin(true);
 		} else {
 			setIsAdmin(false);
 		}
-	}, [session]);
+		*/
+		handleLocalStorage();
+
+		window.addEventListener("storage", handleLocalStorage);
+		setRole(session);
+		return () => {
+			window.removeEventListener("storage", handleLocalStorage);
+		};
+	}, [role]);
 
 	return (
 		<footer class="rounded-lg shadow dark:bg-gray-800 bg-yellow-300 mt-10">
@@ -32,7 +47,7 @@ const Footer = () => {
 							Contattaci
 						</Link>
 					</li>
-					{isAdmin && (
+					{role && role?.role === "admin" && (
 						<li>
 							<Link to="/promote/admin" class="hover:underline">
 								Aggiungi admin

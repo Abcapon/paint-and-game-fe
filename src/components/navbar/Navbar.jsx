@@ -19,8 +19,6 @@ const Navbar = () => {
 	const [isAdmin, setIsAdmin] = useState(false);
 	const navigate = useNavigate();
 
-	console.log("category:", currentCategory);
-
 	const session = useSession();
 
 	useEffect(() => {
