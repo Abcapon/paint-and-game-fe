@@ -58,8 +58,9 @@ const LogIn = () => {
 		const token = localStorage.getItem("loggedInUser");
 		if (token) {
 			navigate("/");
+			window.location.reload();
 		}
-	}, []);
+	}, [isAuthenticated]);
 
 	const signIn = () => {
 		navigate("/user");

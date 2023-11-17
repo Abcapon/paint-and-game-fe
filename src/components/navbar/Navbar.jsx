@@ -157,7 +157,7 @@ const Navbar = () => {
 								currentCategory === "Pittura" &&
 								location.pathname.startsWith("/products/")
 									? "bg-black text-yellow-300"
-									: "hover:bg-gray-100 md:hover:bg-black md:hover:bg-transparent md:hover:text-yellow-300"
+									: "hover:bg-gray-100 md:hover:bg-black md:hover:text-yellow-300"
 							}`}
 							onClick={handleCategoryClick}
 						>
@@ -171,7 +171,7 @@ const Navbar = () => {
 								category === "Warhammer40k" &&
 								location.pathname.startsWith("/products/")
 									? "bg-black text-yellow-300"
-									: "hover:bg-gray-100 md:hover:bg-black md:hover:bg-transparent md:hover:text-yellow-300"
+									: "hover:bg-gray-100 md:hover:bg-black md:hover:text-yellow-300"
 							}`}
 							onClick={handleCategoryClick}
 						>
@@ -185,7 +185,7 @@ const Navbar = () => {
 								category === "WarhammerAOS" &&
 								location.pathname.startsWith("/products/")
 									? "bg-black text-yellow-300"
-									: "hover:bg-gray-100 md:hover:bg-black md:hover:bg-transparent md:hover:text-yellow-300"
+									: "hover:bg-gray-100 md:hover:bg-black md:hover:text-yellow-300"
 							}`}
 							onClick={handleCategoryClick}
 						>
@@ -199,7 +199,7 @@ const Navbar = () => {
 								category === "StarwarsLegion" &&
 								location.pathname.startsWith("/products/")
 									? "bg-black text-yellow-300"
-									: "hover:bg-gray-100 md:hover:bg-black md:hover:bg-transparent md:hover:text-yellow-300"
+									: "hover:bg-gray-100 md:hover:bg-black md:hover:text-yellow-300"
 							}`}
 							onClick={handleCategoryClick}
 						>
@@ -213,7 +213,7 @@ const Navbar = () => {
 								category === "StarwarsShatterpoint" &&
 								location.pathname.startsWith("/products/")
 									? "bg-black text-yellow-300"
-									: "hover:bg-gray-100 md:hover:bg-black md:hover:bg-transparent md:hover:text-yellow-300"
+									: "hover:bg-gray-100 md:hover:bg-black md:hover:text-yellow-300"
 							}`}
 							onClick={handleCategoryClick}
 						>
@@ -229,7 +229,7 @@ const Navbar = () => {
 									category === "Aggiungi prodotto" &&
 									location.pathname.startsWith("/products/")
 										? "bg-black text-yellow-300"
-										: "hover:bg-gray-100 md:hover:bg-black md:hover:bg-transparent md:hover:text-yellow-300"
+										: "hover:bg-gray-100 md:hover:bg-black md:hover:text-yellow-300"
 								}`}
 								onClick={handleCategoryClick}
 							>
