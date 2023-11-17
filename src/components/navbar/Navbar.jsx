@@ -4,7 +4,7 @@ import { useAuth } from "../context/AuthContext";
 import { useSession } from "../hooks/useSession";
 import { useCategory } from "../context/CategoryContext";
 import { CartContext } from "../context/CartContext";
-import { useNavigate, useParams, Link, useLocation } from "react-router-dom";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 import { IoCartOutline } from "react-icons/io5";
 
 const Navbar = () => {
@@ -20,9 +20,6 @@ const Navbar = () => {
 	const navigate = useNavigate();
 
 	console.log("category:", currentCategory);
-	/*
-	const [selectedCategory, setSelectedCategory] = useState(null);
-	*/
 
 	const session = useSession();
 
@@ -51,6 +48,10 @@ const Navbar = () => {
 		} else {
 			navigate(`/checkout`);
 		}
+	};
+	const handleCategoryClick = () => {
+		// Chiudi il menu mobile quando viene cliccata una categoria
+		setMobileMenuOpen(false);
 	};
 
 	return (
@@ -160,6 +161,7 @@ const Navbar = () => {
 									? "bg-black text-yellow-300"
 									: "hover:bg-gray-100 md:hover:bg-black md:hover:bg-transparent md:hover:text-yellow-300"
 							}`}
+							onClick={handleCategoryClick}
 						>
 							Pittura
 						</Link>
@@ -173,6 +175,7 @@ const Navbar = () => {
 									? "bg-black text-yellow-300"
 									: "hover:bg-gray-100 md:hover:bg-black md:hover:bg-transparent md:hover:text-yellow-300"
 							}`}
+							onClick={handleCategoryClick}
 						>
 							Warhammer 40k
 						</Link>
@@ -199,6 +202,7 @@ const Navbar = () => {
 									? "bg-black text-yellow-300"
 									: "hover:bg-gray-100 md:hover:bg-black md:hover:bg-transparent md:hover:text-yellow-300"
 							}`}
+							onClick={handleCategoryClick}
 						>
 							Starwars Legion
 						</Link>
@@ -212,6 +216,7 @@ const Navbar = () => {
 									? "bg-black text-yellow-300"
 									: "hover:bg-gray-100 md:hover:bg-black md:hover:bg-transparent md:hover:text-yellow-300"
 							}`}
+							onClick={handleCategoryClick}
 						>
 							Starwars Shatterpoint
 						</Link>
@@ -227,6 +232,7 @@ const Navbar = () => {
 										? "bg-black text-yellow-300"
 										: "hover:bg-gray-100 md:hover:bg-black md:hover:bg-transparent md:hover:text-yellow-300"
 								}`}
+								onClick={handleCategoryClick}
 							>
 								Aggiungi prodotto
 							</Link>
