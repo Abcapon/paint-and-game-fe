@@ -90,7 +90,7 @@ export default function CheckoutForm() {
 			{cartItems.length > 0 && (
 				<form
 					id="payment-form"
-					className="my-3 p-4 bg-white rounded-lg w-1/3 text-end"
+					className="my-3 p-4 bg-white rounded-lg text-end"
 					onSubmit={handleSubmit}
 				>
 					<h3>Dati di spedizione</h3>
