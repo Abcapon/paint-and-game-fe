@@ -47,6 +47,7 @@ export const CartProvider = ({ children }) => {
 
 	const clearCart = () => {
 		setCartItems([]);
+		window.scrollTo(0, 0);
 	};
 
 	const getCartTotal = () => {
