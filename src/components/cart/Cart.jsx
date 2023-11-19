@@ -21,16 +21,19 @@ const Cart = () => {
 				)}
 				<div className="flex flex-col gap-4">
 					{cartItems.map((item) => (
-						<div className="flex justify-between items-center" key={item._id}>
+						<div
+							className="flex flex-wrap justify-between items-center"
+							key={item._id}
+						>
 							<div className="flex gap-4">
 								<img
 									src={item.cover}
 									alt={item.title}
-									className="rounded-md h-24"
+									className="rounded-md w-32"
 								/>
 								<div className="flex flex-col">
-									<h2 className="text-lg font-bold">{item.name}</h2>
-									<p className="text-gray-600">{item.price}</p>
+									<h2 className="text-lg">{item.name}</h2>
+									<p className="font-bold text-xl">{item.price}€</p>
 								</div>
 							</div>
 							<div className="flex gap-4 items-center p-5">

@@ -35,7 +35,10 @@ const Footer = () => {
 					</li>
 					{isAdmin && (
 						<li>
-							<Link to="/promote/admin" className="hover:underline">
+							<Link
+								to="/promote/admin"
+								className="hover:underline pl-3 md:pl-auto"
+							>
 								Aggiungi admin
 							</Link>
 						</li>

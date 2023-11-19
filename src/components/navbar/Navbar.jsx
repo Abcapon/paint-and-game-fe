@@ -51,10 +51,14 @@ const Navbar = () => {
 	};
 
 	return (
-		<nav className="bg-black border-gray-200 dark:bg-gray-900 text-white sticky top-0 z-50 h-32">
+		<nav className="bg-black border-gray-200 dark:bg-gray-900 text-white sticky top-0 z-50 h-28 md:h-32">
 			<div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 ">
 				<Link to="/">
-					<img src="/logo2.png" className="h-16 mt-2" alt="Paint&Game Logo" />
+					<img
+						src="/logo2.png"
+						className="h-12 md:h-16 mt-3"
+						alt="Paint&Game Logo"
+					/>
 				</Link>
 
 				{/*inizio bottoni sm*/}
@@ -76,7 +80,7 @@ const Navbar = () => {
 				)}
 				<Link
 					to="/checkout"
-					className="md:hidden absolute right-12 bottom-12 font-medium p-4 flex md:p-0 md:mt-0 dark-bg-gray-800 md-dark-bg-gray-900 dark-border-gray-700 items-center justify-center"
+					className="md:hidden absolute right-10 bottom-8 font-medium p-4 flex md:p-0 md:mt-0 dark-bg-gray-800 md-dark-bg-gray-900 dark-border-gray-700 items-center justify-center"
 				>
 					<IoCartOutline className="icon text-yellow-300 text-2xl" />
 					<p className="ml-1">{cartItems.length}</p>
@@ -116,7 +120,7 @@ const Navbar = () => {
 				<button
 					data-collapse-toggle="navbar-default"
 					type="button"
-					className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 absolute right-2"
+					className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 absolute right-2 top-8"
 					aria-controls="navbar-default"
 					aria-expanded={mobileMenuOpen}
 					onClick={() => setMobileMenuOpen(!mobileMenuOpen)}

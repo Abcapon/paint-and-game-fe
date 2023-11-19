@@ -45,7 +45,7 @@ const Home = () => {
 
 	const variants1 = {
 		hidden: { opacity: 0, y: -50 },
-		visible: { opacity: 1, x: 0, transition: { duration: 2 } },
+		visible: { opacity: 1, y: 0, transition: { duration: 2 } },
 	};
 
 	const variants2 = {
@@ -127,7 +127,7 @@ const Home = () => {
 			</section>
 			<section id="categoriesSection" className="px-20">
 				<motion.div
-					className="h-20 md:h-52 mt-10"
+					className="h-20 md:h-52 mb-2"
 					initial="hidden"
 					animate={controls}
 					variants={variants1}
@@ -135,7 +135,7 @@ const Home = () => {
 				>
 					<Link to="/products/Pittura">
 						<div className="bg-custom-image-url-paint h-full mt-2 flex justify-center items-center">
-							<p className=" text-4xl font-extrabold text-black md:text-5xl lg:text-6xl">
+							<p className="text-2xl font-extrabold md:text-3xl lg:text-4xl text-center text-black">
 								Painting tools
 							</p>
 						</div>
@@ -148,12 +148,12 @@ const Home = () => {
 							to="/products/StarwarsLegion"
 						>
 							<motion.div
-								className="overflow-hidden bg-custom-image-url-legion h-full flex justify-center items-center text-white bg-gray-400 bg-blend-multiply hover:bg-transparent"
+								className="overflow-hidden bg-custom-image-url-legion h-full flex justify-center items-center text-white bg-gray-400 bg-blend-multiply hover:bg-transparent min-h-[90px]"
 								animate={controls}
 								variants={variants2}
 								ref={ref2}
 							>
-								<p className="text-2xl font-extrabold md:text-3xl lg:text-4xl min-h-[64px]">
+								<p className="text-2xl font-extrabold md:text-3xl lg:text-4xl text-center">
 									Starwars Legion
 								</p>
 							</motion.div>
@@ -163,12 +163,12 @@ const Home = () => {
 							to="/products/StarwarsShatterpoint"
 						>
 							<motion.div
-								className="overflow-hidden bg-custom-image-url-shatterpoint h-full flex justify-center items-center text-white bg-gray-400 bg-blend-multiply hover:bg-transparent"
+								className="overflow-hidden bg-custom-image-url-shatterpoint h-full flex justify-center items-center text-white bg-gray-400 bg-blend-multiply hover:bg-transparent min-h-[90px]"
 								animate={controls}
 								variants={variants3}
 								ref={ref2}
 							>
-								<p className="text-2xl font-extrabold md:text-3xl lg:text-4xl min-h-[64px]">
+								<p className="text-2xl font-extrabold md:text-3xl lg:text-4xl text-center">
 									Starwars Shatterpoint
 								</p>
 							</motion.div>
@@ -180,12 +180,12 @@ const Home = () => {
 							to="/products/Warhammer40k"
 						>
 							<motion.div
-								className="overflow-hidden bg-custom-image-url-40k h-full flex justify-center items-center text-white bg-gray-400 bg-blend-multiply hover:bg-transparent"
+								className="overflow-hidden bg-custom-image-url-40k h-full flex justify-center items-center text-white bg-gray-400 bg-blend-multiply hover:bg-transparent min-h-[90px]"
 								animate={controls}
 								variants={variants2}
 								ref={ref3}
 							>
-								<p className="text-2xl font-extrabold md:text-3xl lg:text-4xl min-h-[64px]">
+								<p className="text-2xl font-extrabold md:text-3xl lg:text-4xl  text-center">
 									Warhammer 40k
 								</p>
 							</motion.div>
@@ -195,12 +195,12 @@ const Home = () => {
 							to="/products/WarhammerAOS"
 						>
 							<motion.div
-								className="overflow-hidden bg-custom-image-url-AOS h-full flex justify-center items-center text-white bg-gray-400 bg-blend-multiply hover:bg-transparent"
+								className="overflow-hidden bg-custom-image-url-AOS h-full flex justify-center items-center text-white bg-gray-400 bg-blend-multiply hover:bg-transparent min-h-[90px]"
 								animate={controls}
 								variants={variants3}
 								ref={ref3}
 							>
-								<p className="text-2xl font-extrabold md:text-3xl lg:text-4xl min-h-[64px]">
+								<p className="text-2xl font-extrabold md:text-3xlm lg:text-4xl  text-center">
 									Warhammer AOS
 								</p>
 							</motion.div>
