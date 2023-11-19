@@ -50,7 +50,7 @@ const Success = () => {
 					<div className="p-2 mb-4 text-2xl text-gray-700 rounded-lg bg-gray-100 dark:bg-gray-800 dark:text-gray-400">
 						<p>
 							Accesso effettuato. <br />
-							Reindirizzamento alla Home.
+							Reindirizzamento in corso.
 						</p>
 					</div>
 				</div>
