@@ -6,6 +6,7 @@ import Home from "./components/pages/home/Home";
 import { AuthProvider } from "./components/context/AuthContext";
 import { CartProvider } from "./components/context/CartContext";
 import { CategoryProvider } from "./components/context/CategoryContext";
+import ScrollUp from "./components/context/ScrollUp";
 import ProtectedRoutes from "./components/middlewares/ProtectedRoute";
 import ProtectedAdminRoutes from "./components/middlewares/AdminRoute";
 import LogIn from "./components/pages/logIn/Login";
@@ -38,6 +39,7 @@ function App() {
 	return (
 		<>
 			<Router>
+				<ScrollUp />
 				<CartProvider>
 					<AuthProvider>
 						<CategoryProvider>
