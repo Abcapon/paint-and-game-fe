@@ -25,7 +25,7 @@ const SelectedCategory = () => {
 
 	return (
 		<div className="min-h-screen mt-20">
-			<session className=" flex flex-col">
+			<section className=" flex flex-col">
 				<div className=" px-2 flex flex-wrap gap-4 justify-center container mx-auto">
 					{products &&
 						products.products?.map((product) => (
@@ -54,7 +54,7 @@ const SelectedCategory = () => {
 						className="flex self-center gap-4"
 					/>
 				)}
-			</session>
+			</section>
 		</div>
 	);
 };

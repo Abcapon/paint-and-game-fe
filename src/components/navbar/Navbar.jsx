@@ -4,7 +4,7 @@ import { useAuth } from "../context/AuthContext";
 import { useSession } from "../hooks/useSession";
 import { useCategory } from "../context/CategoryContext";
 import { CartContext } from "../context/CartContext";
-import { useNavigate, Link, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { IoCartOutline } from "react-icons/io5";
 
 const Navbar = () => {
@@ -17,7 +17,6 @@ const Navbar = () => {
 
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 	const [isAdmin, setIsAdmin] = useState(false);
-	const navigate = useNavigate();
 
 	const session = useSession();
 
@@ -39,14 +38,6 @@ const Navbar = () => {
 		window.location.reload();
 	};
 
-	const handleCart = () => {
-		if (!isAuthenticated) {
-			alert("Per accedere al carrello devi effettuare il login");
-			navigate(`/login`);
-		} else {
-			navigate(`/checkout`);
-		}
-	};
 	const handleCategoryClick = () => {
 		// Chiudi il menu mobile quando viene cliccata una categoria
 		setMobileMenuOpen(false);
@@ -76,13 +67,13 @@ const Navbar = () => {
 						Login
 					</Link>
 				)}
-				<button
-					onClick={handleCart}
+				<Link
+					to="/checkout"
 					className="md:hidden absolute right-12 bottom-12 font-medium p-4 flex md:p-0 md:mt-0 dark-bg-gray-800 md-dark-bg-gray-900 dark-border-gray-700 items-center justify-center"
 				>
 					<IoCartOutline className="icon text-yellow-300 text-2xl" />
 					<p className="ml-1">{cartItems.length}</p>
-				</button>
+				</Link>
 
 				{/*fine bottoni sm*/}
 
@@ -105,13 +96,13 @@ const Navbar = () => {
 							Login
 						</Link>
 					)}
-					<button
-						onClick={handleCart}
+					<Link
+						to="/checkout"
 						className="font-medium p-4 flex md:p-0 md:mt-0 dark-bg-gray-800 md-dark-bg-gray-900 dark-border-gray-700 items-center justify-center"
 					>
 						<IoCartOutline className="icon text-yellow-300 text-2xl" />
 						<p className="ml-1">{cartItems.length}</p>
-					</button>
+					</Link>
 				</div>
 				{/*fine bottoni lg*/}
 

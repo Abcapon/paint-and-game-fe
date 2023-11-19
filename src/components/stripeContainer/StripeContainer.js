@@ -4,17 +4,27 @@ import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "../CheckoutForm/CheckoutForm";
 import { CartContext } from "../context/CartContext";
 import Cart from "../cart/Cart";
+import { useAuth } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_SECRET_KEY);
 
 const StripeContainer = () => {
 	const [clientSecret, setClientSecret] = useState("");
 	const { cartItems } = useContext(CartContext);
+	const navigate = useNavigate();
+
+	const { isAuthenticated, setIsAuthenticated } = useAuth();
 
 	const [isPaymentFormOpen, setPaymentFormOpen] = useState(false);
 
 	const handlePaymentButtonClick = () => {
-		setPaymentFormOpen(!isPaymentFormOpen);
+		if (isAuthenticated) {
+			setPaymentFormOpen(!isPaymentFormOpen);
+		} else {
+			alert("Per procedere con il pagamento devi prima effettuare il login");
+			navigate("/login");
+		}
 	};
 
 	useEffect(() => {

@@ -69,9 +69,7 @@ function App() {
 										element={<PatchProduct />}
 									/>
 								</Route>
-								<Route element={<ProtectedRoutes />}>
-									<Route path="/checkout" element={<StripeContainer />} />
-								</Route>
+								<Route path="/checkout" element={<StripeContainer />} />
 								<Route path="*" element={<ErrorPage />} />
 							</Routes>
 							<Footer />
