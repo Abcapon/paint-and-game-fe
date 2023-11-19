@@ -9,7 +9,7 @@ const Cart = () => {
 	const { isAuthenticated } = useAuth();
 
 	return (
-		<section className="mt-10">
+		<section className="md:mt-10">
 			<div className="flex-col flex items-center bg-white gap-8 p-10 text-black text-sm">
 				{cartItems?.length === 0 && (
 					<h2 className="text-lg font-bold text-center pt-10">

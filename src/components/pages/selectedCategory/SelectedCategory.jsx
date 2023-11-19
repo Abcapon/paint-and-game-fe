@@ -24,7 +24,7 @@ const SelectedCategory = () => {
 	}, [category, setCurrentCategory]);
 
 	return (
-		<div className="min-h-screen mt-20">
+		<div className="min-h-screen mt-5 md:mt-20 mb-5 md:mb-auto">
 			<section className=" flex flex-col">
 				<div className=" px-2 flex flex-wrap gap-4 justify-center container mx-auto">
 					{products &&

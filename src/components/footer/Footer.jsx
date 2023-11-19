@@ -16,7 +16,7 @@ const Footer = () => {
 	}, [session]);
 
 	return (
-		<footer className="rounded-lg shadow dark:bg-gray-800 bg-yellow-300 mt-10">
+		<footer className="rounded-lg shadow dark:bg-gray-800 bg-yellow-300 md:mt-10">
 			<div className="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
 				<p className="text-sm text-black-500 sm:text-center dark:text-gray-400">
 					© 2023 Paint&Game. All Rights Reserved.

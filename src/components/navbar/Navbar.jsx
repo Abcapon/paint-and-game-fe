@@ -154,7 +154,7 @@ const Navbar = () => {
 					<li>
 						<Link
 							to="/products/Pittura"
-							className={`text-2xl text-black block py-2 pl-3 pr-4 rounded ${
+							className={`text-m lg:text-xl text-black block py-2 pl-3 pr-4 rounded ${
 								category &&
 								currentCategory === "Pittura" &&
 								location.pathname.startsWith("/products/")
@@ -169,7 +169,7 @@ const Navbar = () => {
 					<li>
 						<Link
 							to="/products/Warhammer40k"
-							className={`text-2xl text-black block py-2 pl-3 pr-4 rounded ${
+							className={`text-m lg:text-xl text-black block py-2 pl-3 pr-4 rounded ${
 								category === "Warhammer40k" &&
 								location.pathname.startsWith("/products/")
 									? "bg-black text-yellow-300"
@@ -183,7 +183,7 @@ const Navbar = () => {
 					<li>
 						<Link
 							to="/products/WarhammerAOS"
-							className={`text-2xl text-black block py-2 pl-3 pr-4 rounded ${
+							className={`text-m lg:text-xl text-black block py-2 pl-3 pr-4 rounded ${
 								category === "WarhammerAOS" &&
 								location.pathname.startsWith("/products/")
 									? "bg-black text-yellow-300"
@@ -197,7 +197,7 @@ const Navbar = () => {
 					<li>
 						<Link
 							to="/products/StarwarsLegion"
-							className={`text-2xl text-black block py-2 pl-3 pr-4 rounded ${
+							className={`text-m lg:text-xl text-black block py-2 pl-3 pr-4 rounded ${
 								category === "StarwarsLegion" &&
 								location.pathname.startsWith("/products/")
 									? "bg-black text-yellow-300"
@@ -211,7 +211,7 @@ const Navbar = () => {
 					<li>
 						<Link
 							to="/products/StarwarsShatterpoint"
-							className={`text-2xl text-black block py-2 pl-3 pr-4 rounded ${
+							className={`text-m lg:text-xl text-black block py-2 pl-3 pr-4 rounded ${
 								category === "StarwarsShatterpoint" &&
 								location.pathname.startsWith("/products/")
 									? "bg-black text-yellow-300"
@@ -227,7 +227,7 @@ const Navbar = () => {
 						<div className="font-medium flex flex-col md:p-0 mt-4 border border-gray-100 rounded-lg  md:flex-row md:space-x-8 md:mt-0 md:border-0 dark-border-gray-700">
 							<Link
 								to="/product"
-								className={`text-2xl text-black block py-2 pl-3 pr-4 rounded ${
+								className={`text-m lg:text-xl text-black block py-2 pl-3 pr-4 rounded ${
 									category === "Aggiungi prodotto" &&
 									location.pathname.startsWith("/products/")
 										? "bg-black text-yellow-300"

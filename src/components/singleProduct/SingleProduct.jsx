@@ -70,7 +70,7 @@ const SingleProduct = ({
 		<motion.div
 			whileHover={{ scale: [null, 1.05, 1.02] }}
 			transition={{ duration: 0.3 }}
-			className="box flex-1 p-4 border bg-white border-gray-800 rounded-lg hover:shadow-2xl dark:bg-gray-800 dark:border-gray-700 w-[350px] flex flex-col items-center text-center"
+			className="box flex-1 p-4 border bg-white border-gray-800 rounded-lg hover:shadow-2xl dark:bg-gray-800 dark:border-gray-700 min-w-[350px] flex flex-col items-center text-center"
 		>
 			<Link to={`/description/${id}`} className="h-1/2 flex items-center">
 				<img
