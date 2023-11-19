@@ -12,6 +12,8 @@ const ProductDescription = () => {
 	const navigate = useNavigate();
 	const { addToCart } = useContext(CartContext);
 
+	console.log("product", product.product);
+
 	const [showAlert, setShowAlert] = useState(false);
 
 	const handleDelete = async (id) => {
@@ -91,7 +93,7 @@ const ProductDescription = () => {
 
 						<div className="flex">
 							<button
-								onClick={() => handleAddToCart(product)}
+								onClick={() => handleAddToCart(product?.product)}
 								className=" text-white bg-gray-500 border-0 py-2 px-4 focus:outline-none hover:bg-gray-600 rounded my-2 mr-2"
 							>
 								Aggiungi al carrello

@@ -1,12 +1,9 @@
 import React, { useContext } from "react";
 import { CartContext } from "../context/CartContext";
-import { useAuth } from "../context/AuthContext";
 
 const Cart = () => {
 	const { cartItems, addToCart, removeFromCart, clearCart, getCartTotal } =
 		useContext(CartContext);
-
-	const { isAuthenticated } = useAuth();
 
 	return (
 		<section className="md:mt-10">
