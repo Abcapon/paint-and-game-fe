@@ -67,24 +67,24 @@ const ProductDescription = () => {
 	}, [id]);
 
 	return (
-		<section class="text-gray-700 body-font overflow-hidden bg-white pt-10">
-			<div class="container px-5 py-24 mx-auto">
-				<div class="lg:w-4/5 mx-auto flex flex-wrap">
+		<section className="text-gray-700 body-font overflow-hidden bg-white pt-10">
+			<div className="container px-5 py-24 mx-auto">
+				<div className="lg:w-4/5 mx-auto flex flex-wrap">
 					<img
 						alt="ecommerce"
-						class="lg:w-1/2 w-full object-cover object-center rounded border border-gray-200"
+						className="lg:w-1/2 w-full object-cover object-center rounded border border-gray-200"
 						src={product.product?.cover}
 					/>
-					<div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-						<h1 class="text-gray-900 text-3xl title-font font-medium mb-1">
+					<div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+						<h1 className="text-gray-900 text-3xl title-font font-medium mb-1">
 							{product.product?.name}
 						</h1>
-						<p class="leading-relaxed">{product.product?.description}</p>
+						<p className="leading-relaxed">{product.product?.description}</p>
 						{product.product?.isInPromo && (
-							<p className="pr-2 text-red-">Offerta speciale </p>
+							<p className="pr-2 text-red-500">Offerta speciale </p>
 						)}
-						<div class="flex">
-							<p class="title-font font-medium text-2xl text-gray-900">
+						<div className="flex">
+							<p className="title-font font-medium text-2xl text-gray-900">
 								{product.product?.price} €
 							</p>
 						</div>
@@ -92,7 +92,7 @@ const ProductDescription = () => {
 						<div className="flex">
 							<button
 								onClick={() => handleAddToCart(product)}
-								class=" text-white bg-gray-500 border-0 py-2 px-4 focus:outline-none hover:bg-gray-600 rounded my-2 mr-2"
+								className=" text-white bg-gray-500 border-0 py-2 px-4 focus:outline-none hover:bg-gray-600 rounded my-2 mr-2"
 							>
 								Aggiungi al carrello
 							</button>

@@ -24,7 +24,7 @@ const Cart = () => {
 							Il tuo carrello è vuoto
 						</h2>
 					)}
-					{cartItems?.lenght > 0 && (
+					{cartItems?.length > 0 && (
 						<h2 className="text-2xl font-bold">Carrello</h2>
 					)}
 					<div className="flex flex-col gap-4">

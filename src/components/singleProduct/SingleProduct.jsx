@@ -70,29 +70,33 @@ const SingleProduct = ({
 		<motion.div
 			whileHover={{ scale: [null, 1.05, 1.02] }}
 			transition={{ duration: 0.3 }}
-			class="box flex-1 p-4 border bg-white border-gray-800 rounded-lg hover:shadow-2xl dark:bg-gray-800 dark:border-gray-700 w-[350px] flex flex-col items-center text-center"
+			className="box flex-1 p-4 border bg-white border-gray-800 rounded-lg hover:shadow-2xl dark:bg-gray-800 dark:border-gray-700 w-[350px] flex flex-col items-center text-center"
 		>
 			<Link to={`/description/${id}`} className="h-1/2 flex items-center">
-				<img class="rounded-t-lg object-cover w-[150px]" src={cover} alt="" />
+				<img
+					className="rounded-t-lg object-cover w-[150px]"
+					src={cover}
+					alt=""
+				/>
 			</Link>
-			<div class=" pt-5">
+			<div className=" pt-5">
 				<Link to={`/description/${id}`}>
-					<h5 class="text-2xl font-bold tracking-tight text-red-900 dark:text-white min-h-[70px]">
+					<h5 className="text-2xl font-bold tracking-tight text-red-900 dark:text-white min-h-[70px]">
 						{name}
 					</h5>
 				</Link>
-				<p class="mb-4 font-normal text-green-700 dark:text-gray-400">
+				<p className="mb-4 font-normal text-green-700 dark:text-gray-400">
 					{category}
 				</p>
-				<p class="mb-3 font-normal text-gray-700 dark:text-gray-400 truncate max-w-xs overflow-hidden">
+				<p className="mb-3 font-normal text-gray-700 dark:text-gray-400 truncate max-w-xs overflow-hidden">
 					{description}
 				</p>
-				<p class="mb-3 font-bold text-gray-700 dark:text-gray-400">
+				<div className="mb-3 font-bold text-gray-700 dark:text-gray-400">
 					{isInPromo && (
 						<p className="text-red-500">Offerta speciale {price}€</p>
 					)}
 					{!isInPromo && <p>{price}€</p>}
-				</p>
+				</div>
 				<div className="mb-4">
 					<button
 						onClick={() => handleAddToCart(product)}
