@@ -73,7 +73,7 @@ const LogIn = () => {
 				<form onSubmit={onSubmit}>
 					<div className="mb-4">
 						<label
-							for="email"
+							htmlFor="email"
 							className="block mb-2 text-sm font-medium text-center text-gray-900 dark:text-white"
 						>
 							Il tuo indirizzo email
@@ -89,7 +89,7 @@ const LogIn = () => {
 					</div>
 					<div className="mb-6 relative">
 						<label
-							for="password"
+							htmlFor="password"
 							className="block mb-2 text-sm font-medium text-center text-gray-900 dark:text-white"
 						>
 							La tua password

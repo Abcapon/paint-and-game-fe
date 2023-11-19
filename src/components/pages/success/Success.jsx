@@ -17,7 +17,8 @@ const Success = () => {
 
 			setTimeout(() => {
 				setIsLoading(false);
-				navigate(`/`);
+				const redirectPath = localStorage.getItem("redirectPath") || "/";
+				navigate(redirectPath);
 			}, 1500);
 		}
 	}, [token, setIsAuthenticated, navigate]);

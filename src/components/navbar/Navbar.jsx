@@ -4,13 +4,15 @@ import { useAuth } from "../context/AuthContext";
 import { useSession } from "../hooks/useSession";
 import { useCategory } from "../context/CategoryContext";
 import { CartContext } from "../context/CartContext";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { IoCartOutline } from "react-icons/io5";
 
 const Navbar = () => {
 	const { isAuthenticated, setIsAuthenticated } = useAuth();
 	const { cartItems } = useContext(CartContext);
 	const { currentCategory } = useCategory();
+
+	const navigate = useNavigate();
 	const location = useLocation();
 
 	const [category, setCategory] = useState(null);
@@ -43,6 +45,11 @@ const Navbar = () => {
 		setMobileMenuOpen(false);
 	};
 
+	const navigateToLogin = () => {
+		localStorage.setItem(`redirectPath`, location.pathname);
+		navigate("/login");
+	};
+
 	return (
 		<nav className="bg-black border-gray-200 dark:bg-gray-900 text-white sticky top-0 z-50 h-32">
 			<div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 ">
@@ -60,12 +67,12 @@ const Navbar = () => {
 					</button>
 				)}
 				{!isAuthenticated && (
-					<Link
-						to="/login"
+					<button
+						onClick={navigateToLogin}
 						className="md:hidden absolute right-24 top-10 block pl-3 pr-4 text-white rounded md:hover-bg-transparent md:border-0 md:hover-text-blue-700 md:p-0 dark-text-white md:dark:hover-text-blue-500 dark:hover-bg-gray-700 dark:hover-text-white md:dark:hover-bg-transparent"
 					>
 						Login
-					</Link>
+					</button>
 				)}
 				<Link
 					to="/checkout"
@@ -89,12 +96,12 @@ const Navbar = () => {
 						</button>
 					)}
 					{!isAuthenticated && (
-						<Link
-							to="/login"
+						<button
+							onClick={navigateToLogin}
 							className="block pl-3 pr-4 text-white rounded md:hover-bg-transparent md:border-0 md:hover-text-blue-700 md:p-0 dark-text-white md:dark:hover-text-blue-500 dark:hover-bg-gray-700 dark:hover-text-white md:dark:hover-bg-transparent"
 						>
 							Login
-						</Link>
+						</button>
 					)}
 					<Link
 						to="/checkout"
