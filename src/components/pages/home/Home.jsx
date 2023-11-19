@@ -121,7 +121,7 @@ const Home = () => {
 						containerClassName="pagination"
 						subContainerClassName="pages pagination"
 						activeClassName="active"
-						className="flex self-center gap-4 py-4"
+						className="flex self-center gap-4 py-4 z-20"
 					/>
 				)}
 			</section>
