@@ -79,7 +79,7 @@ const SingleProduct = ({
 					alt=""
 				/>
 			</Link>
-			<div className=" pt-5">
+			<div className=" pt-5 w-full">
 				<Link to={`/description/${id}`}>
 					<h5 className="text-2xl font-bold tracking-tight text-red-900 dark:text-white min-h-[70px]">
 						{name}
@@ -97,7 +97,7 @@ const SingleProduct = ({
 					)}
 					{!isInPromo && <p>{price}€</p>}
 				</div>
-				<div className="mb-4">
+				<div className="mb-4 flex flex-col items-center">
 					<button
 						onClick={() => handleAddToCart(product)}
 						className="px-4 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded hover:bg-gray-700 focus:outline-none focus:bg-gray-700"
@@ -113,7 +113,7 @@ const SingleProduct = ({
 						</div>
 					)}
 					{isAdmin && (
-						<div className="flex flex-col pt-2">
+						<div className="flex flex-col pt-2 items-center">
 							<button
 								className="px-4 py-2 bg-red-600 text-white text-xs font-bold uppercase rounded hover:bg-red-800 focus:outline-none focus:bg-gray-700 my-1"
 								onClick={() => handleDelete(id)}
