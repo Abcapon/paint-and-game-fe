@@ -42,6 +42,13 @@ const SingleProduct = ({
 	}, [session]);
 
 	const handleDelete = async (id) => {
+		const confirmed = window.confirm(
+			`Sei sicuro di voler eliminare il prodotto: ${product.name}?`
+		);
+
+		if (!confirmed) {
+			return;
+		}
 		try {
 			const response = await axios.delete(
 				`${process.env.REACT_APP_SERVER_BASE_URL}/products/delete/${id}`,

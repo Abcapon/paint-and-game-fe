@@ -102,7 +102,7 @@ const PatchProduct = () => {
 			>
 				<div className="mb-4">
 					<label className="block text-sm font-medium text-gray-700">
-						Name
+						Nome
 					</label>
 					<input
 						type="text"
@@ -132,7 +132,7 @@ const PatchProduct = () => {
 				</div>
 				<div className="mb-4">
 					<label className="block text-sm font-medium text-gray-700">
-						description
+						Descrizione
 					</label>
 					<input
 						type="text"
@@ -145,7 +145,7 @@ const PatchProduct = () => {
 				</div>
 				<div className="mb-4">
 					<label className="block text-sm font-medium text-gray-700">
-						price
+						Prezzo
 					</label>
 					<input
 						type="text"
@@ -169,7 +169,7 @@ const PatchProduct = () => {
 				</div>
 				<div className="mb-4">
 					<label className="block text-sm font-medium text-gray-700">
-						Is in promo?
+						È in promo?
 					</label>
 					<select
 						name="promo"
@@ -180,8 +180,8 @@ const PatchProduct = () => {
 						}}
 						className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-500"
 					>
-						<option value="true">Vero</option>
-						<option value="false">Falso</option>
+						<option value="true">Si</option>
+						<option value="false">No</option>
 					</select>
 				</div>
 				<div className="flex justify-end gap-3">
