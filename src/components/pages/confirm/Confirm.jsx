@@ -30,7 +30,7 @@ const Confirm = () => {
 	}, [token]);
 
 	return (
-		<div className="min-h-screen text-center m-10">
+		<div className="min-h-screen text-center mt-20">
 			{confirmationMessage !== null ? (
 				<p className="bg-red-400 font-bold">{confirmationMessage}</p>
 			) : (

@@ -2,3 +2,4 @@ sistemare numero carrello (2+ prodotti uguali devono aumentare numero)
 Non far sparire aggiungi admin da footer
 mettere banner (errato login)
 sistemare animazioni
+salvataggio carrello in DB e ripreso al login
