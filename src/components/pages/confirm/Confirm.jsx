@@ -20,10 +20,11 @@ const Confirm = () => {
 			const response = await axios.get(
 				`${process.env.REACT_APP_SERVER_BASE_URL}/confirm/${token}`
 			);
+
+			navigateToLogin();
 			alert(
 				"Registrazione effettuata con successo, ora puoi effettuare il login"
 			);
-			navigateToLogin();
 		} catch (error) {
 			setConfirmationMessage("Errore durante la conferma dell'account");
 			console.error("Errore durante la conferma dell'account:", error);
