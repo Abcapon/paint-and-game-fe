@@ -136,7 +136,7 @@ const Home = () => {
 					<Link to="/products/Pittura">
 						<div className="bg-custom-image-url-paint h-full mt-2 flex justify-center items-center">
 							<p className="text-2xl font-extrabold md:text-3xl lg:text-4xl text-center text-black">
-								Painting tools
+								Pittura
 							</p>
 						</div>
 					</Link>
